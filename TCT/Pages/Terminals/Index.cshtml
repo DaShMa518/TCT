@@ -1,0 +1,97 @@
+﻿@page
+@model TCT.Pages.Terminals.IndexModel
+
+@{
+    ViewData["Title"] = "Terminals";
+}
+
+<h2>Terminals</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-action no-color">
+        <p>
+            Find by Part No:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" />
+            <a asp-page="./Index">Back to full list</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.PartNoSort">
+                    @Html.DisplayNameFor(model => model.Terminals[0].PartNo)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Terminals[0].MaxAWG)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Terminals[0].MidMaxAWG)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Terminals[0].MidMinAWG)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Terminals[0].MinAWG)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Terminals[0].MaxInsulDiam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Terminals[0].StripLength)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Terminals[0].DimFront)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Terminals[0].DimRear)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Terminals) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxAWG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MidMaxAWG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MidMinAWG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinAWG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxInsulDiam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StripLength)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DimFront)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DimRear)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

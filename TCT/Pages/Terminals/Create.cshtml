@@ -1,0 +1,74 @@
+﻿@page
+@model TCT.Pages.Terminals.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Terminal</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Terminal.PartNo" class="control-label"></label>
+                <input asp-for="Terminal.PartNo" class="form-control" />
+                <span asp-validation-for="Terminal.PartNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Terminal.MaxAWG" class="control-label"></label>
+                <input asp-for="Terminal.MaxAWG" class="form-control" />
+                <span asp-validation-for="Terminal.MaxAWG" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Terminal.MidMaxAWG" class="control-label"></label>
+                <input asp-for="Terminal.MidMaxAWG" class="form-control" />
+                <span asp-validation-for="Terminal.MidMaxAWG" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Terminal.MidMinAWG" class="control-label"></label>
+                <input asp-for="Terminal.MidMinAWG" class="form-control" />
+                <span asp-validation-for="Terminal.MidMinAWG" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Terminal.MinAWG" class="control-label"></label>
+                <input asp-for="Terminal.MinAWG" class="form-control" />
+                <span asp-validation-for="Terminal.MinAWG" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Terminal.MaxInsulDiam" class="control-label"></label>
+                <input asp-for="Terminal.MaxInsulDiam" class="form-control" />
+                <span asp-validation-for="Terminal.MaxInsulDiam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Terminal.StripLength" class="control-label"></label>
+                <input asp-for="Terminal.StripLength" class="form-control" />
+                <span asp-validation-for="Terminal.StripLength" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Terminal.DimFront" class="control-label"></label>
+                <input asp-for="Terminal.DimFront" class="form-control" />
+                <span asp-validation-for="Terminal.DimFront" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Terminal.DimRear" class="control-label"></label>
+                <input asp-for="Terminal.DimRear" class="form-control" />
+                <span asp-validation-for="Terminal.DimRear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

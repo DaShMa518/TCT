@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="TCT" id="Project-24e5" database="SqlServer" >
+	<schema name="dbo" catalogname="TCT" >
+		<table name="Class" prior="PartClass" >
+			<comment><![CDATA[The classification of the part]]></comment>
+			<column name="Id" type="int" jt="4" mandatory="y" />
+			<column name="Name" type="varchar" length="30" jt="12" mandatory="y" >
+				<comment><![CDATA[The part class name]]></comment>
+			</column>
+			<index name="pk_PartClass" unique="PRIMARY_KEY" >
+				<column name="Id" />
+			</index>
+			<index name="unq_PartClass_Name" unique="UNIQUE_KEY" >
+				<column name="Name" />
+			</index>
+		</table>
+		<table name="Crimp" prior="Tbl" >
+			<column name="Id" type="int" jt="4" mandatory="y" />
+			<column name="TerminalId" prior="Term" type="int" jt="4" mandatory="y" >
+				<comment><![CDATA[The terminal being crimped]]></comment>
+			</column>
+			<column name="ToolId" prior="EquipId" type="int" jt="4" mandatory="y" >
+				<comment><![CDATA[The equipment being used to crimp the terminal]]></comment>
+			</column>
+			<column name="WireAWG" type="int" jt="4" mandatory="y" >
+				<comment><![CDATA[The size of the wire]]></comment>
+			</column>
+			<column name="CrimpHeight" type="decimal" length="3" decimal="3" jt="3" >
+				<comment><![CDATA[The expected measurement, in inches]]></comment>
+			</column>
+			<column name="PullForce" type="int" jt="4" mandatory="y" >
+				<comment><![CDATA[The amount of force required to pull the terminal from the wire, in in-lbs]]></comment>
+			</column>
+			<index name="pk_Crimp" unique="PRIMARY_KEY" >
+				<column name="Id" />
+			</index>
+			<fk name="fk_Crimp_Terminal" to_schema="TCT.dbo" to_table="Terminal" >
+				<fk_column name="TerminalId" pk="Id" />
+			</fk>
+			<fk name="fk_Crimp_Tool" to_schema="TCT.dbo" to_table="Tool" >
+				<fk_column name="ToolId" pk="Id" />
+			</fk>
+		</table>
+		<table name="EquipType" prior="Type" >
+			<column name="Id" type="int" jt="4" mandatory="y" />
+			<column name="Name" type="varchar" length="30" jt="12" mandatory="y" />
+			<index name="pk_EquipType" unique="PRIMARY_KEY" >
+				<column name="Id" />
+			</index>
+			<index name="unq_EquipType_Name" unique="UNIQUE_KEY" >
+				<column name="Name" />
+			</index>
+		</table>
+		<table name="Manufacturer" prior="Equip" >
+			<column name="Id" type="int" jt="4" mandatory="y" />
+			<column name="Name" type="varchar" length="30" jt="12" mandatory="y" />
+			<index name="pk_Manufacturer" unique="PRIMARY_KEY" >
+				<column name="Id" />
+			</index>
+			<index name="unq_Manufacturer_Name" unique="UNIQUE_KEY" >
+				<column name="Name" />
+			</index>
+		</table>
+		<table name="TermToolXref" prior="TermEquipXref" >
+			<comment><![CDATA[The table holding all of the cross-references to terminal and equipment]]></comment>
+			<column name="Id" type="int" jt="4" mandatory="y" />
+			<column name="TermId" type="int" jt="4" mandatory="y" >
+				<comment><![CDATA[The terminal ID of the cross-referenced terminal]]></comment>
+			</column>
+			<column name="ToolId" prior="EquipId" type="int" jt="4" mandatory="y" >
+				<comment><![CDATA[The equip ID of the equipment cross-reference]]></comment>
+			</column>
+			<index name="idx_TermEquipXref" unique="NORMAL" >
+				<column name="TermId" options="ASC" />
+				<column name="ToolId" options="ASC" />
+			</index>
+			<index name="pk_TermToolXref" unique="PRIMARY_KEY" >
+				<column name="Id" />
+			</index>
+			<fk name="fk_TermXref" to_schema="TCT.dbo" to_table="Terminal" >
+				<fk_column name="TermId" pk="Id" />
+			</fk>
+			<fk name="fk_ToolXref" to_schema="TCT.dbo" to_table="Tool" >
+				<fk_column name="ToolId" pk="Id" />
+			</fk>
+		</table>
+		<table name="Terminal" prior="Tbl" >
+			<comment><![CDATA[A listing of all terminals]]></comment>
+			<column name="Id" type="int" jt="4" mandatory="y" />
+			<column name="PartNo" type="varchar" length="30" jt="12" mandatory="y" >
+				<comment><![CDATA[The manufacturer's part number]]></comment>
+			</column>
+			<column name="ManufacturerId" prior="ManufId" type="int" jt="4" mandatory="y" >
+				<comment><![CDATA[The manufacturer (or OEM) of the terminal]]></comment>
+			</column>
+			<column name="ClassId" prior="TermClass" type="int" jt="4" mandatory="y" >
+				<comment><![CDATA[The part class of the terminal]]></comment>
+			</column>
+			<column name="MaxAWG" prior="AwgMax" type="int" jt="4" >
+				<comment><![CDATA[The largest wire size]]></comment>
+			</column>
+			<column name="MidMaxAWG" prior="AwgMidMax" type="int" jt="4" >
+				<comment><![CDATA[The second largest wire size]]></comment>
+			</column>
+			<column name="MidMinAWG" prior="AwgMidMin" type="int" jt="4" >
+				<comment><![CDATA[The second smallest wire size]]></comment>
+			</column>
+			<column name="MinAWG" prior="AwgMin" type="int" jt="4" >
+				<comment><![CDATA[The smallest wire size]]></comment>
+			</column>
+			<column name="MaxInsulDiam" prior="MaxInsulationDiameter" type="decimal" length="3" decimal="3" jt="3" >
+				<comment><![CDATA[The maximum diameter of the wire insulation this terminal will accept]]></comment>
+			</column>
+			<column name="StripLength" type="decimal" length="3" decimal="3" jt="3" >
+				<comment><![CDATA[The dimensional length to strip the wire in inches]]></comment>
+			</column>
+			<column name="DimFront" type="decimal" length="0" decimal="2" jt="3" >
+				<comment><![CDATA[From the end of the wire, the dimension to the front of the terminal]]></comment>
+			</column>
+			<column name="DimRear" type="decimal" length="0" decimal="2" jt="3" >
+				<comment><![CDATA[From the end of the wire, the dimension to the rear of the terminal]]></comment>
+			</column>
+			<index name="pk_Terminal" unique="PRIMARY_KEY" >
+				<column name="Id" />
+			</index>
+			<fk name="fk_Term_Class" to_schema="TCT.dbo" to_table="Class" >
+				<fk_column name="ClassId" pk="Id" />
+			</fk>
+			<fk name="fk_Terminal_Manufacturer" to_schema="TCT.dbo" to_table="Manufacturer" >
+				<fk_column name="ManufacturerId" pk="Id" />
+			</fk>
+		</table>
+		<table name="Tool" prior="Equipment" spec="" >
+			<comment><![CDATA[Stores identification information for equipment]]></comment>
+			<column name="Id" type="int" jt="4" mandatory="y" />
+			<column name="ToolId" prior="EquipId" type="varchar" length="7" jt="12" mandatory="y" >
+				<comment><![CDATA[Company designated equip id number]]></comment>
+			</column>
+			<column name="ModelNo" prior="Model" type="nvarchar" length="30" jt="12" mandatory="y" >
+				<comment><![CDATA[The manufacturer's model number (or part number) of the equipment]]></comment>
+			</column>
+			<column name="SerialNo" prior="Serial" type="nvarchar" length="30" jt="12" >
+				<comment><![CDATA[The serial number provided by the manufacturer]]></comment>
+			</column>
+			<column name="TypeId" prior="EquipType" type="int" jt="4" mandatory="y" >
+				<comment><![CDATA[Foreign key to equipment type]]></comment>
+			</column>
+			<column name="ManufacturerId" prior="EquipManuf" type="int" jt="4" mandatory="y" >
+				<comment><![CDATA[The manufacturer (or OEM) of the equipment]]></comment>
+			</column>
+			<index name="pk_Equipment" unique="PRIMARY_KEY" >
+				<column name="Id" />
+			</index>
+			<fk name="fk_Equip_Type" to_schema="TCT.dbo" to_table="EquipType" >
+				<fk_column name="TypeId" pk="Id" />
+			</fk>
+			<fk name="fk_Equip_Manuf" to_schema="TCT.dbo" to_table="Manufacturer" >
+				<fk_column name="ManufacturerId" pk="Id" />
+			</fk>
+		</table>
+	</schema>
+	<connector name="MyDb" database="MySql" host="localhost" port="3306" user="root" useSystemProxy="false" />
+	<layout name="Default Layout" id="Layout-1677" joined_routing="y" show_relation="cascade" >
+		<entity schema="TCT.dbo" name="Class" color="C1EEDC" x="80" y="48" />
+		<entity schema="TCT.dbo" name="Crimp" color="C1EEDC" x="48" y="176" />
+		<entity schema="TCT.dbo" name="EquipType" color="C1D8EE" x="1040" y="48" />
+		<entity schema="TCT.dbo" name="Manufacturer" color="EEC1E9" x="560" y="48" />
+		<entity schema="TCT.dbo" name="TermToolXref" color="C1D8EE" x="624" y="208" />
+		<entity schema="TCT.dbo" name="Terminal" color="C1EEDC" x="288" y="48" />
+		<entity schema="TCT.dbo" name="Tool" color="C1D8EE" x="800" y="48" />
+		<callout x="816" y="496" pointer="Round" >
+			<comment><![CDATA[This is a layout - a diagram with tools.
+- Create new entities by right-clicking the layout. 
+- Double-click entity headers to edit.
+- For a better understanding of the schema, create multiple layouts.
+- Deploy the model into the database by converting it first to the physical design.]]></comment>
+		</callout>
+	</layout>
+</project>
