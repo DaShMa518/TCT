@@ -32,6 +32,7 @@ namespace TCT.Pages.Terminals
 
             IQueryable<Terminal> terminalsIQ = from s in _context.Terminals
                                                select s;
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 terminalsIQ = terminalsIQ.Where(s => s.PartNo.Contains(searchString));

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using TCT.Data;
 using TCT.Models;
 
-namespace TCT.Pages.Terminals
+namespace TCT.Pages.Tools
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace TCT.Pages.Terminals
             _context = context;
         }
 
-        public Terminal Terminal { get; set; } = default!; 
+        public Tool Tool { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,13 +28,13 @@ namespace TCT.Pages.Terminals
                 return NotFound();
             }
 
-            Terminal = await _context.Terminals
+            Tool = await _context.Tools
                 .Include(s => s.TermToolXrefs)
-                .ThenInclude(e => e.Tool)
+                .ThenInclude(e => e.Terminal)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Terminal == null)
+            if (Tool == null)
             {
                 return NotFound();
             }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using TCT.Data;
 using TCT.Models;
 
-namespace TCT.Pages.Terminals
+namespace TCT.Pages.Tools
 {
     public class DeleteModel : PageModel
     {
@@ -22,7 +22,7 @@ namespace TCT.Pages.Terminals
         }
 
         [BindProperty]
-        public Terminal Terminal { get; set; } = default!;
+        public Tool Tool { get; set; }
         public string ErrorMessage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
@@ -32,11 +32,11 @@ namespace TCT.Pages.Terminals
                 return NotFound();
             }
 
-            Terminal = await _context.Terminals
+            Tool = await _context.Tools
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Terminal == null)
+            if (Tool == null)
             {
                 return NotFound();
             }
@@ -54,16 +54,16 @@ namespace TCT.Pages.Terminals
             {
                 return NotFound();
             }
-            var terminal = await _context.Terminals.FindAsync(id);
+            var tool = await _context.Tools.FindAsync(id);
 
-            if (terminal == null)
+            if (tool == null)
             {
                 return NotFound();
             }
 
             try
             {
-                _context.Terminals.Remove(terminal);
+                _context.Tools.Remove(tool);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
             }
@@ -72,7 +72,7 @@ namespace TCT.Pages.Terminals
                 _logger.LogError(ex, ErrorMessage);
                 return RedirectToAction("./Delete", new { id, saveChangesError = true });
             }
-            
+
         }
     }
 }

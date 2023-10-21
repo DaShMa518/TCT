@@ -1,0 +1,64 @@
+﻿@page
+@model TCT.Pages.Tools.IndexModel
+
+@{
+    ViewData["Title"] = "Tools";
+}
+
+<h2>Tooling</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-action no-color">
+        <p>
+            Find by Part No:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" />
+            <a asp-page="./Index">Back to full list</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.InternalIdSort">
+                    @Html.DisplayNameFor(model => model.Tools[0].InternalId)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ModelNoSort">
+                    @Html.DisplayNameFor(model => model.Tools[0].ModelNo)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tools[0].SerialNo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Tools) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InternalId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNo)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
