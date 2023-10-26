@@ -30,7 +30,11 @@ namespace TCT.Pages.Terminals
                 return NotFound();
             }
 
-            Terminal =  await _context.Terminals.FindAsync(id);
+            Terminal =  await _context.Terminals
+                .Include(c => c.Manufacturer)
+                .Include(c => c.TermClass)
+                .FirstOrDefaultAsync(m => m.Id == id);
+                //.FindAsync(id);
 
             if (Terminal == null)
             {
@@ -60,6 +64,8 @@ namespace TCT.Pages.Terminals
                 terminalToUpdate,
                 "Terminal", // Prefix for form value.
                 s => s.PartNo,
+                s => s.ManufacturerId,
+                s => s.TermClassId,
                 s => s.MaxAWG,
                 s => s.MidMaxAWG,
                 s => s.MidMinAWG,

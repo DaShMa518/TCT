@@ -25,6 +25,8 @@ namespace TCT.Pages.Terminals
             Terminal = new Terminal
             {
                 PartNo = "2-520181-2",
+                ManufacturerId = 1,
+                TermClassId = 1,
                 MaxAWG = 18,
                 MidMaxAWG = 20,
                 MidMinAWG = 21,
@@ -53,6 +55,8 @@ namespace TCT.Pages.Terminals
                 emptyTerminal,
                 "Terminal", // Prefix for form value.
                 s => s.PartNo,
+                s => s.ManufacturerId,
+                s => s.TermClassId,
                 s => s.MaxAWG,
                 s => s.MidMaxAWG,
                 s => s.MidMinAWG,

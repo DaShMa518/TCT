@@ -20,6 +20,21 @@
                 <span asp-validation-for="Terminal.PartNo" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Terminal.Manufacturer.Name" class="control-label"></label>
+                <input asp-for="Terminal.Manufacturer.Name" class="form-control" />
+                <span asp-validation-for="Terminal.Manufacturer.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Terminal.TermClass.Name" class="control-label"></label>
+                <input asp-for="Terminal.TermClass.Name" class="form-control" />
+                <span asp-validation-for="Terminal.TermClass.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Terminal.MaxAWG" class="control-label"></label>
+                <input asp-for="Terminal.MaxAWG" class="form-control" />
+                <span asp-validation-for="Terminal.MaxAWG" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Terminal.MaxAWG" class="control-label"></label>
                 <input asp-for="Terminal.MaxAWG" class="form-control" />
                 <span asp-validation-for="Terminal.MaxAWG" class="text-danger"></span>

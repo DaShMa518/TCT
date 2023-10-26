@@ -30,12 +30,24 @@
             @Html.DisplayFor(model => model.Tool.SerialNo)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tool.ManufacturerId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tool.Manufacturer.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tool.EquipTypeId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tool.EquipType.Name)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Tool.TermToolXrefs)
         </dt>
         <dd class="col-sm-10">
             <table class="table">
                 <tr>
-                    <th>Tool Id</th>
+                    <th>Terminal Id</th>
                 </tr>
                 @foreach (var item in Model.Tool.TermToolXrefs)
                 {

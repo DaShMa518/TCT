@@ -29,6 +29,8 @@ namespace TCT.Pages.Tools
             }
 
             Tool = await _context.Tools
+                .Include(c => c.Manufacturer)
+                .Include(c => c.EquipType)
                 .Include(s => s.TermToolXrefs)
                 .ThenInclude(e => e.Terminal)
                 .AsNoTracking()

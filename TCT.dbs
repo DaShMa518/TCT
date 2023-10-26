@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="TCT" id="Project-24e5" database="SqlServer" >
 	<schema name="dbo" catalogname="TCT" >
-		<table name="Class" prior="PartClass" >
-			<comment><![CDATA[The classification of the part]]></comment>
-			<column name="Id" type="int" jt="4" mandatory="y" />
-			<column name="Name" type="varchar" length="30" jt="12" mandatory="y" >
-				<comment><![CDATA[The part class name]]></comment>
-			</column>
-			<index name="pk_PartClass" unique="PRIMARY_KEY" >
-				<column name="Id" />
-			</index>
-			<index name="unq_PartClass_Name" unique="UNIQUE_KEY" >
-				<column name="Name" />
-			</index>
-		</table>
 		<table name="Crimp" prior="Tbl" >
 			<column name="Id" type="int" jt="4" mandatory="y" />
 			<column name="TerminalId" prior="Term" type="int" jt="4" mandatory="y" >
@@ -58,6 +45,19 @@
 				<column name="Id" />
 			</index>
 			<index name="unq_Manufacturer_Name" unique="UNIQUE_KEY" >
+				<column name="Name" />
+			</index>
+		</table>
+		<table name="TermClass" prior="Class" >
+			<comment><![CDATA[The classification of the part]]></comment>
+			<column name="Id" type="int" jt="4" mandatory="y" />
+			<column name="Name" type="varchar" length="30" jt="12" mandatory="y" >
+				<comment><![CDATA[The part class name]]></comment>
+			</column>
+			<index name="pk_TermClass" unique="PRIMARY_KEY" >
+				<column name="Id" />
+			</index>
+			<index name="unq_TermClass_Name" unique="UNIQUE_KEY" >
 				<column name="Name" />
 			</index>
 		</table>
@@ -123,7 +123,7 @@
 			<index name="pk_Terminal" unique="PRIMARY_KEY" >
 				<column name="Id" />
 			</index>
-			<fk name="fk_Term_Class" to_schema="TCT.dbo" to_table="Class" >
+			<fk name="fk_Term_TermClass" to_schema="TCT.dbo" to_table="TermClass" >
 				<fk_column name="ClassId" pk="Id" />
 			</fk>
 			<fk name="fk_Terminal_Manufacturer" to_schema="TCT.dbo" to_table="Manufacturer" >
@@ -161,10 +161,10 @@
 	</schema>
 	<connector name="MyDb" database="MySql" host="localhost" port="3306" user="root" useSystemProxy="false" />
 	<layout name="Default Layout" id="Layout-1677" joined_routing="y" show_relation="cascade" >
-		<entity schema="TCT.dbo" name="Class" color="C1EEDC" x="80" y="48" />
 		<entity schema="TCT.dbo" name="Crimp" color="C1EEDC" x="48" y="176" />
 		<entity schema="TCT.dbo" name="EquipType" color="C1D8EE" x="1040" y="48" />
 		<entity schema="TCT.dbo" name="Manufacturer" color="EEC1E9" x="560" y="48" />
+		<entity schema="TCT.dbo" name="TermClass" color="C1EEDC" x="80" y="48" />
 		<entity schema="TCT.dbo" name="TermToolXref" color="C1D8EE" x="624" y="208" />
 		<entity schema="TCT.dbo" name="Terminal" color="C1EEDC" x="288" y="48" />
 		<entity schema="TCT.dbo" name="Tool" color="C1D8EE" x="800" y="48" />

@@ -26,6 +26,8 @@ namespace TCT.Pages.Tools
                 InternalId = "WP5-075",
                 ModelNo = "2266140-1",
                 SerialNo = "740357",
+                ManufacturerId = 1,
+                EquipTypeId = 1
             };
             return Page();
         }
@@ -47,7 +49,9 @@ namespace TCT.Pages.Tools
                 "Tool", // Prefix for form value.
                 s => s.InternalId,
                 s => s.ModelNo,
-                s => s.SerialNo))
+                s => s.SerialNo,
+                s => s.ManufacturerId,
+                s => s.EquipTypeId))
             {
                 _context.Tools.Add(emptyTool);
                 await _context.SaveChangesAsync();

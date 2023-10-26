@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using TCT.Data;
 using TCT.Models;
 
-namespace TCT.Pages.Terminals
+namespace TCT.Pages.Crimps
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace TCT.Pages.Terminals
             _context = context;
         }
 
-        public Terminal Terminal { get; set; } = default!; 
+      public Crimp Crimp { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,15 +28,24 @@ namespace TCT.Pages.Terminals
                 return NotFound();
             }
 
-            Terminal = await _context.Terminals
-                .Include(c => c.Manufacturer)
-                .Include(c => c.TermClass)
-                .Include(s => s.TermToolXrefs)
-                .ThenInclude(e => e.Tool)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.Id == id);
+            //var crimp = await _context.Crimps.FirstOrDefaultAsync(m => m.Id == id);
+            //if (crimp == null)
+            //{
+            //    return NotFound();
+            //}
+            //else 
+            //{
+            //    Crimp = crimp;
+            //}
+            //return Page();
 
-            if (Terminal == null)
+            Crimp = await _context.Crimps
+            .Include(c => c.Terminal)
+            .Include(c => c.Tool)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (Crimp == null)
             {
                 return NotFound();
             }

@@ -30,7 +30,11 @@ namespace TCT.Pages.Tools
                 return NotFound();
             }
 
-            Tool = await _context.Tools.FindAsync(id);
+            Tool = await _context.Tools
+                .Include(c => c.Manufacturer)
+                .Include(c => c.EquipType)
+                .FirstOrDefaultAsync(m => m.Id == id);
+                //.FindAsync(id);
 
             if (Tool == null)
             {
@@ -61,7 +65,9 @@ namespace TCT.Pages.Tools
                 "Tool", // Prefix for form value.
                 s => s.InternalId,
                 s => s.ModelNo,
-                s => s.SerialNo))
+                s => s.SerialNo,
+                s => s.ManufacturerId,
+                s => s.EquipTypeId))
             {
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
