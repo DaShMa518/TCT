@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Terminals\TerminalSelectPageModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Pages\Crimps\Create.cshtml" />
     <None Include="Pages\Crimps\Delete.cshtml" />
     <None Include="Pages\Crimps\Details.cshtml" />
