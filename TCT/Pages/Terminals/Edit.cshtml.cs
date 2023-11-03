@@ -34,7 +34,6 @@ namespace TCT.Pages.Terminals
                 .Include(c => c.Manufacturer)
                 .Include(c => c.TermClass)
                 .FirstOrDefaultAsync(m => m.Id == id);
-                //.FindAsync(id);
 
             if (Terminal == null)
             {
@@ -65,7 +64,7 @@ namespace TCT.Pages.Terminals
                 "Terminal", // Prefix for form value.
                 s => s.PartNo,
                 s => s.ManufacturerId,
-                //s => s.TermClassId,
+                s => s.TermClassId,
                 s => s.MaxAWG,
                 s => s.MidMaxAWG,
                 s => s.MidMinAWG,
@@ -79,25 +78,6 @@ namespace TCT.Pages.Terminals
                 return RedirectToPage("./Index");
             }
 
-            //    _context.Attach(Terminal).State = EntityState.Modified;
-
-            //try
-            //{
-            //    await _context.SaveChangesAsync();
-            //}
-            //catch (DbUpdateConcurrencyException)
-            //{
-            //    if (!TerminalExists(Terminal.Id))
-            //    {
-            //        return NotFound();
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
-
-            //return RedirectToPage("./Index");
             return Page();
         }
 

@@ -21,11 +21,6 @@ namespace TCT.Pages.Crimps
             _logger = logger;
         }
 
-        //public DeleteModel(TCT.Data.TCTContext context)
-        //{
-        //    _context = context;
-        //}
-
         [BindProperty]
         public Crimp Crimp { get; set; }
         public string ErrorMessage { get; set; }
@@ -41,16 +36,10 @@ namespace TCT.Pages.Crimps
             .AsNoTracking()
             .FirstOrDefaultAsync(m => m.Id == id);
 
-            //var crimp = await _context.Crimps.FirstOrDefaultAsync(m => m.Id == id);
-
             if (Crimp == null)
             {
                 return NotFound();
             }
-            //else 
-            //{
-            //    Crimp = crimp;
-            //}
 
             if (saveChangesError.GetValueOrDefault())
             {
@@ -72,10 +61,6 @@ namespace TCT.Pages.Crimps
                 return NotFound();
             }
 
-            //Crimp = crimp;
-            //_context.Crimps.Remove(Crimp);
-            //await _context.SaveChangesAsync();
-
             try
             {
                 _context.Crimps.Remove(crimp);
@@ -88,7 +73,6 @@ namespace TCT.Pages.Crimps
                 return RedirectToAction("./Delete", new { id, saveChangesError = true });
             }
 
-            //return RedirectToPage("./Index");
         }
     }
 }

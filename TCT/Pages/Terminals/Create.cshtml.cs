@@ -45,10 +45,6 @@ namespace TCT.Pages.Terminals
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            //if (!ModelState.IsValid || _context.Terminals == null || Terminal == null)
-            //{
-            //    return Page();
-            //}
             var emptyTerminal = new Terminal();
 
             if (await TryUpdateModelAsync<Terminal>(

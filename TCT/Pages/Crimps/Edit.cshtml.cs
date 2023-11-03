@@ -68,24 +68,6 @@ namespace TCT.Pages.Crimps
             {
                 await _context.SaveChangesAsync();
 
-                //    _context.Attach(Crimp).State = EntityState.Modified;
-
-                //try
-                //{
-                //    await _context.SaveChangesAsync();
-                //}
-                //catch (DbUpdateConcurrencyException)
-                //{
-                //    if (!CrimpExists(Crimp.Id))
-                //    {
-                //        return NotFound();
-                //    }
-                //    else
-                //    {
-                //        throw;
-                //    }
-                //}
-
                 return RedirectToPage("./Index");
             }
             return Page();

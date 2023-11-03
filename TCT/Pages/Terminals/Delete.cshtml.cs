@@ -13,19 +13,19 @@ namespace TCT.Pages.Terminals
     public class DeleteModel : PageModel
     {
         private readonly TCT.Data.TCTContext _context;
-        //private readonly ILogger<DeleteModel> _logger;
+        private readonly ILogger<DeleteModel> _logger;
 
-        public DeleteModel(TCT.Data.TCTContext context)/*, ILogger<DeleteModel> logger)*/
+        public DeleteModel(TCT.Data.TCTContext context, ILogger<DeleteModel> logger)
         {
             _context = context;
-            //_logger = logger;
+            _logger = logger;
         }
 
         [BindProperty]
-        public Terminal Terminal { get; set; } = default!;
-        //public string ErrorMessage { get; set; }
+        public Terminal Terminal { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id/*, bool? saveChangesError = false*/)
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
@@ -42,10 +42,10 @@ namespace TCT.Pages.Terminals
                 return NotFound();
             }
 
-            //if (saveChangesError.GetValueOrDefault())
-            //{
-            //    ErrorMessage = String.Format("Delete {Id} failed. Try again", id);
-            //}
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = String.Format("Delete {Id} failed. Try again", id);
+            }
             return Page();
         }
 
@@ -57,25 +57,23 @@ namespace TCT.Pages.Terminals
             }
             var terminal = await _context.Terminals.FindAsync(id);
 
-            if (terminal != null)
+            if (terminal == null)
             {
-                //return NotFound();
-                _context.Terminals.Remove(terminal);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            //try
-            //{
-            //    _context.Terminals.Remove(terminal);
-            //    await _context.SaveChangesAsync();
-            //    return RedirectToPage("./Index");
-            //}
-            //catch (DbUpdateException ex)
-            //{
-            //    //_logger.LogError(ex, ErrorMessage);
-            //    return RedirectToAction("./Delete", new { id, saveChangesError = true });
-            //}
-            return RedirectToPage("./Index")/*, new { id, saveChangesError = true })*/;
+            try
+            {
+                _context.Terminals.Remove(terminal);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, ErrorMessage);
+                return RedirectToAction("./Delete", new { id, saveChangesError = true });
+            }
+            //return RedirectToPage("./Index")/*, new { id, saveChangesError = true })*/;
 
         }
     }

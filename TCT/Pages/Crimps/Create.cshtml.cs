@@ -21,16 +21,14 @@ namespace TCT.Pages.Crimps
 
         public IActionResult OnGet()
         {
-        //ViewData["TerminalId"] = new SelectList(_context.Terminals, "Id", "Id");
-        //ViewData["ToolId"] = new SelectList(_context.Tools, "Id", "Id");
-        Crimp = new Crimp
-        {
-            TerminalId = 3,
-            ToolId = 5,
-            WireAWG = 18,
-            CrimpHeight = .085f,
-            PullForce = 30
-        };
+            Crimp = new Crimp
+            {
+                TerminalId = 3,
+                ToolId = 5,
+                WireAWG = 18,
+                CrimpHeight = .085f,
+                PullForce = 30
+            };
             return Page();
         }
 
@@ -41,15 +39,6 @@ namespace TCT.Pages.Crimps
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          //if (!ModelState.IsValid)
-          //  {
-          //      return Page();
-          //  }
-
-          //  _context.Crimps.Add(Crimp);
-          //  await _context.SaveChangesAsync();
-
-          //  return RedirectToPage("./Index");
             var emptyCrimp = new Crimp();
 
             if (await TryUpdateModelAsync<Crimp>(

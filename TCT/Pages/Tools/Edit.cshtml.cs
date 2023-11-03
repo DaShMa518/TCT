@@ -34,7 +34,6 @@ namespace TCT.Pages.Tools
                 .Include(c => c.Manufacturer)
                 .Include(c => c.EquipType)
                 .FirstOrDefaultAsync(m => m.Id == id);
-                //.FindAsync(id);
 
             if (Tool == null)
             {
@@ -73,25 +72,6 @@ namespace TCT.Pages.Tools
                 return RedirectToPage("./Index");
             }
 
-            //    _context.Attach(Terminal).State = EntityState.Modified;
-
-            //try
-            //{
-            //    await _context.SaveChangesAsync();
-            //}
-            //catch (DbUpdateConcurrencyException)
-            //{
-            //    if (!TerminalExists(Terminal.Id))
-            //    {
-            //        return NotFound();
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
-
-            //return RedirectToPage("./Index");
             return Page();
         }
 

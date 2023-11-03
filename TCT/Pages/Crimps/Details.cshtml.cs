@@ -28,17 +28,6 @@ namespace TCT.Pages.Crimps
                 return NotFound();
             }
 
-            //var crimp = await _context.Crimps.FirstOrDefaultAsync(m => m.Id == id);
-            //if (crimp == null)
-            //{
-            //    return NotFound();
-            //}
-            //else 
-            //{
-            //    Crimp = crimp;
-            //}
-            //return Page();
-
             Crimp = await _context.Crimps
             .Include(c => c.Terminal)
             .Include(c => c.Tool)

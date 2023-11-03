@@ -2,7 +2,6 @@
 
 namespace TCT.Models
 {
-    //[EntityTypeConfiguration(typeof(BookConfiguration))]
     public class Terminal
     {
         public int Id { get; set; }
@@ -21,7 +20,6 @@ namespace TCT.Models
         public int CrimpId { get; set; }
 
 
-        //public ICollection<Tool> Tools { get; set; }
         public ICollection<TermToolXref> TermToolXrefs { get; set; }
         public Manufacturer Manufacturer { get; set; }
         public TermClass TermClass { get; set; }

@@ -23,12 +23,9 @@ namespace TCT.Pages.Crimps
 
         public async Task OnGetAsync()
         {
-            //if (_context.Crimps != null)
-            //{
-                Crimp = await _context.Crimps
-                .Include(c => c.Terminal)
-                .Include(c => c.Tool).ToListAsync();
-            //}
+            Crimp = await _context.Crimps
+            .Include(c => c.Terminal)
+            .Include(c => c.Tool).ToListAsync();
         }
     }
 }
