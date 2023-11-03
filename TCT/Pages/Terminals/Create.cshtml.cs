@@ -12,7 +12,11 @@ using TCT.Models;
 
 namespace TCT.Pages.Terminals
 {
+
     public class CreateModel : TermOptionsSelectPageModel
+    //public class CreateModel : PageModel
+
+    //public class CreateModel : TerminalSelectPageModel
     //public class CreateModel : PageModel
     {
         private readonly TCT.Data.TCTContext _context;
@@ -24,8 +28,12 @@ namespace TCT.Pages.Terminals
 
         public IActionResult OnGet()
         {
+
             PopulateManufacturerDropDownList(_context);
             PopulateTermClassDropDownList(_context);
+
+            //PopulateToolsDropDownList(_context);
+
             Terminal = new Terminal
             {
                 PartNo = "2-520181-2",
@@ -40,6 +48,7 @@ namespace TCT.Pages.Terminals
                 DimFront = .20f,
                 DimRear = .20f,
             };
+            
             return Page();
         }
 
@@ -71,10 +80,14 @@ namespace TCT.Pages.Terminals
                 return RedirectToPage("./Index");
             }
 
+
             // Select ManufacturerId if TryUpdateModelAsync fails.
             PopulateManufacturerDropDownList(_context, emptyTerminal.ManufacturerId);
             // Select TermClassId if TryUpdateModelAsync fails.
             PopulateTermClassDropDownList(_context, emptyTerminal.TermClassId);
+
+
+
             return Page();
         }
     }
