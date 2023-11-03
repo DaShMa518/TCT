@@ -72,7 +72,7 @@ namespace TCT.Data
 
             var termToolXrefs = new TermToolXref[]
             {
-                new TermToolXref { TerminalId = 1, ToolId = 1 },
+                //new TermToolXref { TerminalId = 1, ToolId = 1 }, // will add this record manually for testing
                 new TermToolXref { TerminalId = 1, ToolId = 2 },
                 new TermToolXref { TerminalId = 1, ToolId = 3 },
                 new TermToolXref { TerminalId = 2, ToolId = 1 },

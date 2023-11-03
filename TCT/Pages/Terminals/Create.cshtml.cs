@@ -11,6 +11,7 @@ using TCT.Models;
 
 namespace TCT.Pages.Terminals
 {
+    //public class CreateModel : TerminalSelectPageModel
     public class CreateModel : PageModel
     {
         private readonly TCT.Data.TCTContext _context;
@@ -22,6 +23,7 @@ namespace TCT.Pages.Terminals
 
         public IActionResult OnGet()
         {
+            //PopulateToolsDropDownList(_context);
             Terminal = new Terminal
             {
                 PartNo = "2-520181-2",
@@ -36,6 +38,7 @@ namespace TCT.Pages.Terminals
                 DimFront = .20f,
                 DimRear = .20f,
             };
+            
             return Page();
         }
 
@@ -64,9 +67,9 @@ namespace TCT.Pages.Terminals
             {
                 _context.Terminals.Add(emptyTerminal);
                 await _context.SaveChangesAsync();
-
                 return RedirectToPage("./Index");
             }
+
 
             return Page();
         }
