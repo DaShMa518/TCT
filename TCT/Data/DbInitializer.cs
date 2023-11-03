@@ -47,7 +47,7 @@ namespace TCT.Data
 
             var terminals = new Terminal[]
             {
-                new Terminal { PartNo="2-520181-2",ManufacturerId=1,TermClassId=3,MaxAWG=18,MidMaxAWG=20,MidMinAWG=null,MinAWG=22,MaxInsulDiam=.135f,StripLength=.280f,DimFront=null,DimRear=null },
+                new Terminal { PartNo="2-520181-2",/*ManufacturerId=1,TermClassId=3,*/MaxAWG=18,MidMaxAWG=20,MidMinAWG=null,MinAWG=22,MaxInsulDiam=.135f,StripLength=.280f,DimFront=null,DimRear=null },
                 new Terminal{ PartNo="2-520183-2",ManufacturerId=1,TermClassId=3,MaxAWG=18,MidMaxAWG=20,MidMinAWG=null,MinAWG=22,MaxInsulDiam=.135f,StripLength=.280f,DimFront=null,DimRear=null },
                 new Terminal{ PartNo="1500-0105",ManufacturerId=2,TermClassId=3,MaxAWG=16,MidMaxAWG=18,MidMinAWG=null,MinAWG=20,MaxInsulDiam=null,StripLength=.180f,DimFront=null,DimRear=null },
                 new Terminal{ PartNo="1500-0110",ManufacturerId=2,TermClassId=3,MaxAWG=16,MidMaxAWG=18,MidMinAWG=null,MinAWG=20,MaxInsulDiam=null,StripLength=.180f,DimFront=null,DimRear=null }
@@ -58,7 +58,7 @@ namespace TCT.Data
 
             var tools = new Tool[]
             {
-                new Tool{ InternalId="WP5-078",ModelNo="2151034-2",SerialNo="723059",ManufacturerId=1,EquipTypeId=1 },
+                new Tool{ InternalId="WP5-078",ModelNo="2151034-2",SerialNo="723059",/*ManufacturerId=1,EquipTypeId=1*/ },
                 new Tool{ InternalId="WP5-109",ModelNo="466779-3",SerialNo="601194",ManufacturerId=1,EquipTypeId=1 },
                 new Tool{ InternalId="WP5-152",ModelNo="2151034-2",SerialNo="748702",ManufacturerId=1,EquipTypeId=1 },
                 new Tool{ InternalId="WP5-075",ModelNo="2266140-1",SerialNo="743057",ManufacturerId=1,EquipTypeId=1 },

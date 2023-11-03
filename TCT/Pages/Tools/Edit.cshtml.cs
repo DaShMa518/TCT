@@ -11,7 +11,7 @@ using TCT.Models;
 
 namespace TCT.Pages.Tools
 {
-    public class EditModel : PageModel
+    public class EditModel : ToolOptionsSelectPageModel
     {
         private readonly TCT.Data.TCTContext _context;
 
@@ -29,6 +29,9 @@ namespace TCT.Pages.Tools
             {
                 return NotFound();
             }
+
+            PopulateManufacturerDropDownList(_context);
+            PopulateEquipTypeDropDownList(_context);
 
             Tool = await _context.Tools
                 .Include(c => c.Manufacturer)
@@ -72,6 +75,10 @@ namespace TCT.Pages.Tools
                 return RedirectToPage("./Index");
             }
 
+            // Select ManufacturerId if TryUpdateModelAsync fails.
+            PopulateManufacturerDropDownList(_context, toolToUpdate.ManufacturerId);
+            // Select TermClassId if TryUpdateModelAsync fails.
+            PopulateEquipTypeDropDownList(_context, toolToUpdate.EquipTypeId);
             return Page();
         }
 

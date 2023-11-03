@@ -10,7 +10,8 @@ using TCT.Models;
 
 namespace TCT.Pages.Tools
 {
-    public class CreateModel : PageModel
+    public class CreateModel : ToolOptionsSelectPageModel
+    //public class CreateModel : PageModel
     {
         private readonly TCT.Data.TCTContext _context;
 
@@ -21,6 +22,8 @@ namespace TCT.Pages.Tools
 
         public IActionResult OnGet()
         {
+            PopulateManufacturerDropDownList(_context);
+            PopulateEquipTypeDropDownList(_context);
             Tool = new Tool
             {
                 InternalId = "WP5-075",
@@ -55,6 +58,10 @@ namespace TCT.Pages.Tools
                 return RedirectToPage("./Index");
             }
 
+            // Select ManufacturerId if TryUpdateModelAsync fails.
+            PopulateManufacturerDropDownList(_context, emptyTool.ManufacturerId);
+            // Select TermClassId if TryUpdateModelAsync fails.
+            PopulateEquipTypeDropDownList(_context, emptyTool.EquipTypeId);
             return Page();
         }
     }

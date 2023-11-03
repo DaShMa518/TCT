@@ -30,14 +30,20 @@
                 <span asp-validation-for="Tool.SerialNo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Tool.Manufacturer.Name" class="control-label"></label>
-                <input asp-for="Tool.Manufacturer.Name" class="form-control" />
-                <span asp-validation-for="Tool.Manufacturer.Name" class="text-danger"></span>
+                <label asp-for="Tool.Manufacturer" class="control-label"></label>
+                <select asp-for="Tool.ManufacturerId" class="form-control"
+                        asp-items="@Model.ManufacturerSelectionSL">
+                    <option value="">-- Select Manufacturer --</option>
+                </select>
+                <span asp-validation-for="Tool.ManufacturerId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Tool.EquipType.Name" class="control-label"></label>
-                <input asp-for="Tool.EquipType.Name" class="form-control" />
-                <span asp-validation-for="Tool.EquipType.Name" class="text-danger"></span>
+                <label asp-for="Tool.EquipType" class="control-label"></label>
+                <select asp-for="Tool.EquipTypeId" class="form-control"
+                        asp-items="@Model.EquipTypeSelectionSL">
+                    <option value="">-- Select Type --</option>
+                </select>
+                <span asp-validation-for="Tool.EquipTypeId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
