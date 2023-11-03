@@ -65,7 +65,7 @@ namespace TCT.Pages.Terminals
                 "Terminal", // Prefix for form value.
                 s => s.PartNo,
                 s => s.ManufacturerId,
-                s => s.TermClassId,
+                //s => s.TermClassId,
                 s => s.MaxAWG,
                 s => s.MidMaxAWG,
                 s => s.MidMinAWG,

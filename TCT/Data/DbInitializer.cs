@@ -25,9 +25,9 @@ namespace TCT.Data
 
             var equipType = new EquipType[]
 {
-                new EquipType { Name="Applicator" },
-                new EquipType { Name="Crimp Die" },
-                new EquipType { Name="Hand Tool" }
+                                        new EquipType { Name="Applicator" },
+                                        new EquipType { Name="Crimp Die" },
+                                        new EquipType { Name="Hand Tool" }
 };
 
             context.EquipTypes.AddRange(equipType);
@@ -35,9 +35,9 @@ namespace TCT.Data
 
             var termClass = new TermClass[]
 {
-                new TermClass { Name="Cut Strip" },
-                new TermClass { Name="Loose Piece" },
-                new TermClass { Name="Reel" }
+                            new TermClass { Name="Cut Strip" },
+                            new TermClass { Name="Loose Piece" },
+                            new TermClass { Name="Reel" }
 };
 
             context.TermClasses.AddRange(termClass);
@@ -62,9 +62,9 @@ namespace TCT.Data
                 new Tool{ InternalId="WP5-109",ModelNo="466779-3",SerialNo="601194",ManufacturerId=1,EquipTypeId=1 },
                 new Tool{ InternalId="WP5-152",ModelNo="2151034-2",SerialNo="748702",ManufacturerId=1,EquipTypeId=1 },
                 new Tool{ InternalId="WP5-075",ModelNo="2266140-1",SerialNo="743057",ManufacturerId=1,EquipTypeId=1 },
-                new Tool{ InternalId="WP5-120",ModelNo="680330-1",SerialNo="606956",ManufacturerId=1,EquipTypeId=1 },
-                new Tool{ InternalId="WP5-151",ModelNo="2151916-1",SerialNo="748287",ManufacturerId=1,EquipTypeId=1 },
-                new Tool{ InternalId="WP5-206",ModelNo="1500-0105",SerialNo="1122A-10515",ManufacturerId=3,EquipTypeId=1 }
+                new Tool{ InternalId="WP5-120",ModelNo="680330-1",SerialNo="606956",ManufacturerId=1,EquipTypeId=1  },
+                new Tool{ InternalId="WP5-151",ModelNo="2151916-1",SerialNo="748287",ManufacturerId=1,EquipTypeId=1  },
+                new Tool{ InternalId="WP5-206",ModelNo="1500-0105",SerialNo="1122A-10515",ManufacturerId=3,EquipTypeId=1  }
             };
 
             context.Tools.AddRange(tools);

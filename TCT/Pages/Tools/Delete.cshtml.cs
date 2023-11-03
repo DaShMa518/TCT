@@ -13,19 +13,21 @@ namespace TCT.Pages.Tools
     public class DeleteModel : PageModel
     {
         private readonly TCT.Data.TCTContext _context;
-        private readonly ILogger<DeleteModel> _logger;
+        //private readonly ILogger<DeleteModel> _logger;
 
-        public DeleteModel(TCT.Data.TCTContext context, ILogger<DeleteModel> logger)
+        //public DeleteModel(TCT.Data.TCTContext context, ILogger<DeleteModel> logger)
+        public DeleteModel(TCT.Data.TCTContext context)
         {
             _context = context;
-            _logger = logger;
+            //_logger = logger;
         }
 
         [BindProperty]
         public Tool Tool { get; set; }
-        public string ErrorMessage { get; set; }
+        //public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
+        //public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
@@ -34,6 +36,9 @@ namespace TCT.Pages.Tools
 
             Tool = await _context.Tools
                 .AsNoTracking()
+                //.Include(c => c.Crimps)
+                //.Include(c => c.Manufacturer)
+                //.Include(c => c.EquipType)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (Tool == null)
@@ -41,10 +46,10 @@ namespace TCT.Pages.Tools
                 return NotFound();
             }
 
-            if (saveChangesError.GetValueOrDefault())
-            {
-                ErrorMessage = String.Format("Delete {Id} failed. Try again", id);
-            }
+            //if (saveChangesError.GetValueOrDefault())
+            //{
+            //    ErrorMessage = String.Format("Delete {{Id}} failed. Try again", id);
+            //}
             return Page();
         }
 
@@ -56,22 +61,24 @@ namespace TCT.Pages.Tools
             }
             var tool = await _context.Tools.FindAsync(id);
 
-            if (tool == null)
-            {
-                return NotFound();
-            }
-
-            try
+            if (tool != null)
             {
                 _context.Tools.Remove(tool);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+                //return NotFound();
             }
-            catch (DbUpdateException ex)
-            {
-                _logger.LogError(ex, ErrorMessage);
-                return RedirectToAction("./Delete", new { id, saveChangesError = true });
-            }
+
+            //try
+            //{
+            //    _context.Tools.Remove(tool);
+            //    await _context.SaveChangesAsync();
+            return RedirectToPage("./Index");
+            //}
+            //catch (DbUpdateException ex)
+            //{
+            //    _logger.LogError(ex, ErrorMessage);
+            //    return RedirectToAction("./Delete", new { id, saveChangesError = true });
+            //}
 
         }
     }

@@ -32,7 +32,7 @@ namespace TCT.Pages.Tools
                 .Include(c => c.Manufacturer)
                 .Include(c => c.EquipType)
                 .Include(s => s.TermToolXrefs)
-                .ThenInclude(e => e.Terminal)
+                    .ThenInclude(e => e.Terminal)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id == id);
 

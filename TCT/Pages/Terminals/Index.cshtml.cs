@@ -32,7 +32,7 @@ namespace TCT.Pages.Terminals
 
             IQueryable<Terminal> terminalsIQ = from s in _context.Terminals
                                                .Include(c => c.Manufacturer)
-                                               .Include(c => c.TermClass)
+                                                   .Include(c => c.TermClass)
                                                select s;
 
             if (!String.IsNullOrEmpty(searchString))

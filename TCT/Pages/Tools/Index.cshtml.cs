@@ -34,8 +34,8 @@ namespace TCT.Pages.Tools
             CurrentFilter = searchString;
 
             IQueryable<Tool> toolsIQ = from s in _context.Tools
-                                       .Include(c => c.Manufacturer)
-                                       .Include(c => c.EquipType)
+                                           .Include(c => c.Manufacturer)
+                                           .Include(c => c.EquipType)
                                        select s;
 
             if (!String.IsNullOrEmpty(searchString))
