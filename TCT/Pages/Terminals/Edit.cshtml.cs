@@ -11,7 +11,7 @@ using TCT.Models;
 
 namespace TCT.Pages.Terminals
 {
-    public class EditModel : PageModel
+    public class EditModel : TermOptionsSelectPageModel
     {
         private readonly TCT.Data.TCTContext _context;
 
@@ -29,6 +29,9 @@ namespace TCT.Pages.Terminals
             {
                 return NotFound();
             }
+
+            PopulateManufacturerDropDownList(_context);
+            PopulateTermClassDropDownList(_context);
 
             Terminal =  await _context.Terminals
                 .Include(c => c.Manufacturer)
@@ -78,6 +81,10 @@ namespace TCT.Pages.Terminals
                 return RedirectToPage("./Index");
             }
 
+            // Select ManufacturerId if TryUpdateModelAsync fails.
+            PopulateManufacturerDropDownList(_context, terminalToUpdate.ManufacturerId);
+            // Select TermClassId if TryUpdateModelAsync fails.
+            PopulateTermClassDropDownList(_context, terminalToUpdate.TermClassId);
             return Page();
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Composition;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,7 +12,8 @@ using TCT.Models;
 
 namespace TCT.Pages.Terminals
 {
-    public class CreateModel : PageModel
+    public class CreateModel : TermOptionsSelectPageModel
+    //public class CreateModel : PageModel
     {
         private readonly TCT.Data.TCTContext _context;
 
@@ -22,6 +24,8 @@ namespace TCT.Pages.Terminals
 
         public IActionResult OnGet()
         {
+            PopulateManufacturerDropDownList(_context);
+            PopulateTermClassDropDownList(_context);
             Terminal = new Terminal
             {
                 PartNo = "2-520181-2",
@@ -64,10 +68,13 @@ namespace TCT.Pages.Terminals
             {
                 _context.Terminals.Add(emptyTerminal);
                 await _context.SaveChangesAsync();
-
                 return RedirectToPage("./Index");
             }
 
+            // Select ManufacturerId if TryUpdateModelAsync fails.
+            PopulateManufacturerDropDownList(_context, emptyTerminal.ManufacturerId);
+            // Select TermClassId if TryUpdateModelAsync fails.
+            PopulateTermClassDropDownList(_context, emptyTerminal.TermClassId);
             return Page();
         }
     }
