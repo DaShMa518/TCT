@@ -7,17 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Pages\Crimps\**" />
-    <Content Remove="Pages\Crimps\**" />
-    <EmbeddedResource Remove="Pages\Crimps\**" />
-    <None Remove="Pages\Crimps\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Models\Crimp.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <None Include="Pages\Crimps\Create.cshtml" />
+    <None Include="Pages\Crimps\Delete.cshtml" />
+    <None Include="Pages\Crimps\Details.cshtml" />
+    <None Include="Pages\Crimps\Edit.cshtml" />
+    <None Include="Pages\Crimps\Index.cshtml" />
     <None Include="Pages\Terminals\Create.cshtml" />
     <None Include="Pages\Terminals\Delete.cshtml" />
     <None Include="Pages\Terminals\Details.cshtml" />

@@ -91,16 +91,16 @@ namespace TCT.Data
             context.TermToolXrefs.AddRange(termToolXrefs);
             context.SaveChanges();
 
-            //var crimp = new Crimp[]
-            //{
-            //    new Crimp { TerminalId=3 },
-            //    new Crimp { ToolId=5 },
-            //    new Crimp { WireAWG=18 },
-            //    new Crimp { CrimpHeight=.085f },
-            //    new Crimp { PullForce=30 }
-            //};
-            //context.Crimps.AddRange(crimp);
-            //context.SaveChanges();
+            var crimp = new Crimp[]
+            {
+                new Crimp { TerminalId = 1, ToolId = 1, WireAWG = 18, CrimpHeight = .085f, PullForce = 30 },
+                new Crimp { TerminalId = 2, ToolId = 2, WireAWG = 18, CrimpHeight = .085f, PullForce = 30 },
+                new Crimp { TerminalId = 3, ToolId = 4, WireAWG = 18, /*CrimpHeight = .085f,*/ PullForce = 35 },
+                new Crimp { TerminalId = 4, ToolId = 5, WireAWG = 18, /*CrimpHeight = .085f,*/ PullForce = 35 },
+                //new Crimp { TerminalId = 5, ToolId = 5, WireAWG = 18, CrimpHeight = .085f, PullForce = 30 },
+            };
+            context.Crimps.AddRange(crimp);
+            context.SaveChanges();
 
 
         }

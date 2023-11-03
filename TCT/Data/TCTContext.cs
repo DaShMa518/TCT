@@ -23,7 +23,7 @@ namespace TCT.Data
         public DbSet<Manufacturer> Manufacturers { get; set; }
         public DbSet<EquipType> EquipTypes { get; set; }
         public DbSet<TermClass> TermClasses { get; set; }
-        //public DbSet<Crimp> Crimps { get; set; }
+        public DbSet<Crimp> Crimps { get; set; }
 
 
 
@@ -96,7 +96,8 @@ namespace TCT.Data
             //    .WithOne(y => y.EquipType);
             ////modelBuilder.Entity<TermClass>().ToTable("TermClass");
 
-            //modelBuilder.Entity<Crimp>()
+            modelBuilder.Entity<Crimp>()
+                .ToTable(nameof(Crimp));
             //    .HasOne(e => e.Terminal)
             //    .WithMany(e => e.Crimps)
             //    .OnDelete(DeleteBehavior.Cascade);

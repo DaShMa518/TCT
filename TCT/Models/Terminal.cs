@@ -18,14 +18,14 @@ namespace TCT.Models
         public float? StripLength { get; set; }
         public float? DimFront { get; set; }
         public float? DimRear { get; set; }
-        //public int CrimpId { get; set; }
+        public int CrimpId { get; set; }
 
 
         //public ICollection<Tool> Tools { get; set; }
         public ICollection<TermToolXref> TermToolXrefs { get; set; }
         public Manufacturer Manufacturer { get; set; }
         public TermClass TermClass { get; set; }
-        //public ICollection<Crimp> Crimps { get; set; }
+        public ICollection<Crimp> Crimps { get; set; }
 
 
     }
