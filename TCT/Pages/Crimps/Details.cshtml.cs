@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using TCT.Data;
 using TCT.Models;
 
-namespace TCT.Pages.Tools
+namespace TCT.Pages.Crimps
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace TCT.Pages.Tools
             _context = context;
         }
 
-        public Tool Tool { get; set; }
+      public Crimp Crimp { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,15 +28,13 @@ namespace TCT.Pages.Tools
                 return NotFound();
             }
 
-            Tool = await _context.Tools
-                .Include(c => c.Manufacturer)
-                .Include(c => c.EquipType)
-                .Include(s => s.TermToolXrefs)
-                    .ThenInclude(e => e.Terminal)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.Id == id);
+            Crimp = await _context.Crimps
+            .Include(c => c.Terminal)
+            .Include(c => c.Tool)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Tool == null)
+            if (Crimp == null)
             {
                 return NotFound();
             }

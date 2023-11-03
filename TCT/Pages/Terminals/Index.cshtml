@@ -31,6 +31,12 @@
                 </a>
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Terminals[0].ManufacturerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Terminals[0].TermClassId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Terminals[0].MaxAWG)
             </th>
             <th>
@@ -62,6 +68,12 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.PartNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TermClass.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MaxAWG)

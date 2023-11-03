@@ -25,6 +25,8 @@ namespace TCT.Pages.Terminals
             Terminal = new Terminal
             {
                 PartNo = "2-520181-2",
+                ManufacturerId = 1,
+                TermClassId = 1,
                 MaxAWG = 18,
                 MidMaxAWG = 20,
                 MidMinAWG = 21,
@@ -43,16 +45,14 @@ namespace TCT.Pages.Terminals
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            //if (!ModelState.IsValid || _context.Terminals == null || Terminal == null)
-            //{
-            //    return Page();
-            //}
             var emptyTerminal = new Terminal();
 
             if (await TryUpdateModelAsync<Terminal>(
                 emptyTerminal,
                 "Terminal", // Prefix for form value.
                 s => s.PartNo,
+                s => s.ManufacturerId,
+                s => s.TermClassId,
                 s => s.MaxAWG,
                 s => s.MidMaxAWG,
                 s => s.MidMinAWG,

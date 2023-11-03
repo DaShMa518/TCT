@@ -7,6 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Pages\Crimps\Create.cshtml" />
+    <None Include="Pages\Crimps\Delete.cshtml" />
+    <None Include="Pages\Crimps\Details.cshtml" />
+    <None Include="Pages\Crimps\Edit.cshtml" />
+    <None Include="Pages\Crimps\Index.cshtml" />
+    <None Include="Pages\Terminals\Create.cshtml" />
+    <None Include="Pages\Terminals\Delete.cshtml" />
+    <None Include="Pages\Terminals\Details.cshtml" />
+    <None Include="Pages\Terminals\Edit.cshtml" />
+    <None Include="Pages\Terminals\Index.cshtml" />
+    <None Include="Pages\Tools\Create.cshtml" />
+    <None Include="Pages\Tools\Delete.cshtml" />
+    <None Include="Pages\Tools\Details.cshtml" />
+    <None Include="Pages\Tools\Edit.cshtml" />
+    <None Include="Pages\Tools\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.12">

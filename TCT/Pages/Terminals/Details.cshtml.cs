@@ -29,8 +29,10 @@ namespace TCT.Pages.Terminals
             }
 
             Terminal = await _context.Terminals
+                .Include(c => c.Manufacturer)
+                .Include(c => c.TermClass)
                 .Include(s => s.TermToolXrefs)
-                .ThenInclude(e => e.Tool)
+                    .ThenInclude(e => e.Tool)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id == id);
 

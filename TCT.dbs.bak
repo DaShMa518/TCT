@@ -133,7 +133,7 @@
 		<table name="Tool" prior="Equipment" spec="" >
 			<comment><![CDATA[Stores identification information for equipment]]></comment>
 			<column name="Id" type="int" jt="4" mandatory="y" />
-			<column name="ToolId" prior="EquipId" type="varchar" length="7" jt="12" mandatory="y" >
+			<column name="InternalId" prior="ToolId" type="varchar" length="7" jt="12" mandatory="y" >
 				<comment><![CDATA[Company designated equip id number]]></comment>
 			</column>
 			<column name="ModelNo" prior="Model" type="nvarchar" length="30" jt="12" mandatory="y" >
@@ -148,7 +148,7 @@
 			<column name="ManufacturerId" prior="EquipManuf" type="int" jt="4" mandatory="y" >
 				<comment><![CDATA[The manufacturer (or OEM) of the equipment]]></comment>
 			</column>
-			<index name="pk_Equipment" unique="PRIMARY_KEY" >
+			<index name="pk_Tool" unique="PRIMARY_KEY" >
 				<column name="Id" />
 			</index>
 			<fk name="fk_Equip_Type" to_schema="TCT.dbo" to_table="EquipType" >

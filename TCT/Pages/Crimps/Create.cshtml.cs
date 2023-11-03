@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using TCT.Data;
 using TCT.Models;
 
-namespace TCT.Pages.Tools
+namespace TCT.Pages.Crimps
 {
     public class CreateModel : PageModel
     {
@@ -21,35 +21,36 @@ namespace TCT.Pages.Tools
 
         public IActionResult OnGet()
         {
-            Tool = new Tool
+            Crimp = new Crimp
             {
-                InternalId = "WP5-075",
-                ModelNo = "2266140-1",
-                SerialNo = "740357",
-                ManufacturerId = 1,
-                EquipTypeId = 1
+                TerminalId = 3,
+                ToolId = 5,
+                WireAWG = 18,
+                CrimpHeight = .085f,
+                PullForce = 30
             };
             return Page();
         }
 
         [BindProperty]
-        public Tool Tool { get; set; }
+        public Crimp Crimp { get; set; }
+        
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            var emptyTool = new Tool();
+            var emptyCrimp = new Crimp();
 
-            if (await TryUpdateModelAsync<Tool>(
-                emptyTool,
-                "Tool", // Prefix for form value.
-                s => s.InternalId,
-                s => s.ModelNo,
-                s => s.SerialNo,
-                s => s.ManufacturerId,
-                s => s.EquipTypeId))
+            if (await TryUpdateModelAsync<Crimp>(
+                emptyCrimp,
+                "Crimp", // Prefix for form value.
+                s => s.TerminalId,
+                s => s.ToolId,
+                s => s.WireAWG,
+                s => s.CrimpHeight,
+                s => s.PullForce))
             {
-                _context.Tools.Add(emptyTool);
+                _context.Crimps.Add(emptyCrimp);
                 await _context.SaveChangesAsync();
 
                 return RedirectToPage("./Index");

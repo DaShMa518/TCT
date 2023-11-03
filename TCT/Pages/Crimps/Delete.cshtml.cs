@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using TCT.Data;
 using TCT.Models;
 
-namespace TCT.Pages.Terminals
+namespace TCT.Pages.Crimps
 {
     public class DeleteModel : PageModel
     {
@@ -22,7 +22,7 @@ namespace TCT.Pages.Terminals
         }
 
         [BindProperty]
-        public Terminal Terminal { get; set; }
+        public Crimp Crimp { get; set; }
         public string ErrorMessage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
@@ -32,12 +32,11 @@ namespace TCT.Pages.Terminals
                 return NotFound();
             }
 
-            Terminal = await _context.Terminals
-                .AsNoTracking()
-                //.Include(c => c.Manufacturer)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            Crimp = await _context.Crimps
+            .AsNoTracking()
+            .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Terminal == null)
+            if (Crimp == null)
             {
                 return NotFound();
             }
@@ -55,16 +54,16 @@ namespace TCT.Pages.Terminals
             {
                 return NotFound();
             }
-            var terminal = await _context.Terminals.FindAsync(id);
+            var crimp = await _context.Crimps.FindAsync(id);
 
-            if (terminal == null)
+            if (crimp == null)
             {
                 return NotFound();
             }
 
             try
             {
-                _context.Terminals.Remove(terminal);
+                _context.Crimps.Remove(crimp);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
             }
@@ -73,7 +72,6 @@ namespace TCT.Pages.Terminals
                 _logger.LogError(ex, ErrorMessage);
                 return RedirectToAction("./Delete", new { id, saveChangesError = true });
             }
-            //return RedirectToPage("./Index")/*, new { id, saveChangesError = true })*/;
 
         }
     }

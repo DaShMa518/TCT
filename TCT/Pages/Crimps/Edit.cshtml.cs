@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using TCT.Data;
 using TCT.Models;
 
-namespace TCT.Pages.Terminals
+namespace TCT.Pages.Crimps
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace TCT.Pages.Terminals
         }
 
         [BindProperty]
-        public Terminal Terminal { get; set; } = default!;
+        public Crimp Crimp { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,16 +30,14 @@ namespace TCT.Pages.Terminals
                 return NotFound();
             }
 
-            Terminal =  await _context.Terminals
-                .Include(c => c.Manufacturer)
-                .Include(c => c.TermClass)
-                .FirstOrDefaultAsync(m => m.Id == id);
-
-            if (Terminal == null)
+            var crimp =  await _context.Crimps.FirstOrDefaultAsync(m => m.Id == id);
+            if (crimp == null)
             {
                 return NotFound();
             }
-
+            Crimp = crimp;
+           ViewData["TerminalId"] = new SelectList(_context.Terminals, "Id", "Id");
+           ViewData["ToolId"] = new SelectList(_context.Tools, "Id", "Id");
             return Page();
         }
 
@@ -52,38 +50,32 @@ namespace TCT.Pages.Terminals
                 return Page();
             }
 
-            var terminalToUpdate = await _context.Terminals.FindAsync(id);
+            var crimpToUpdate = await _context.Crimps.FindAsync(id);
 
-            if (terminalToUpdate == null)
+            if (crimpToUpdate == null)
             {
                 return NotFound();
             }
 
-            if (await TryUpdateModelAsync<Terminal>(
-                terminalToUpdate,
-                "Terminal", // Prefix for form value.
-                s => s.PartNo,
-                s => s.ManufacturerId,
-                s => s.TermClassId,
-                s => s.MaxAWG,
-                s => s.MidMaxAWG,
-                s => s.MidMinAWG,
-                s => s.MinAWG,
-                s => s.MaxInsulDiam,
-                s => s.StripLength,
-                s => s.DimFront,
-                s => s.DimRear))
+            if (await TryUpdateModelAsync<Crimp>(
+                crimpToUpdate,
+                "Crimp", // Prefix for form value.
+                s => s.TerminalId,
+                s => s.ToolId,
+                s => s.WireAWG,
+                s => s.CrimpHeight,
+                s => s.PullForce))
             {
                 await _context.SaveChangesAsync();
+
                 return RedirectToPage("./Index");
             }
-
             return Page();
         }
 
-        private bool TerminalExists(int id)
+            private bool CrimpExists(int id)
         {
-          return (_context.Terminals?.Any(e => e.Id == id)).GetValueOrDefault();
+          return _context.Crimps.Any(e => e.Id == id);
         }
     }
 }

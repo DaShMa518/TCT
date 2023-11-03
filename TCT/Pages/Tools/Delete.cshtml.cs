@@ -34,6 +34,9 @@ namespace TCT.Pages.Tools
 
             Tool = await _context.Tools
                 .AsNoTracking()
+                //.Include(c => c.Crimps)
+                //.Include(c => c.Manufacturer)
+                //.Include(c => c.EquipType)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (Tool == null)
@@ -43,7 +46,7 @@ namespace TCT.Pages.Tools
 
             if (saveChangesError.GetValueOrDefault())
             {
-                ErrorMessage = String.Format("Delete {Id} failed. Try again", id);
+                ErrorMessage = String.Format("Delete {{Id}} failed. Try again", id);
             }
             return Page();
         }
