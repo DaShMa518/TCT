@@ -13,51 +13,67 @@ namespace TCT.Pages.Manufacturers
     public class DeleteModel : PageModel
     {
         private readonly TCT.Data.TCTContext _context;
+        private readonly ILogger<DeleteModel> _logger;
 
-        public DeleteModel(TCT.Data.TCTContext context)
+        public DeleteModel(TCT.Data.TCTContext context, ILogger<DeleteModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [BindProperty]
-      public Manufacturer Manufacturer { get; set; }
+        public Manufacturer Manufacturer { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
         {
-            if (id == null || _context.Manufacturers == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var manufacturer = await _context.Manufacturers.FirstOrDefaultAsync(m => m.Id == id);
+            var manufacturer = await _context.Manufacturers
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             if (manufacturer == null)
             {
                 return NotFound();
             }
-            else 
+
+            if (saveChangesError.GetValueOrDefault())
             {
-                Manufacturer = manufacturer;
+                ErrorMessage = String.Format("Delete {{ID}} failed. Try again", id);
             }
+
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Manufacturers == null)
+            if (id == null)
             {
                 return NotFound();
             }
             var manufacturer = await _context.Manufacturers.FindAsync(id);
 
-            if (manufacturer != null)
+            if (manufacturer == null)
             {
-                Manufacturer = manufacturer;
-                _context.Manufacturers.Remove(Manufacturer);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try 
+            {
+                _context.Manufacturers.Remove(manufacturer);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, ErrorMessage);
+            }
+
+            return RedirectToAction("./Delete", new { id, saveChangesError = true });
         }
     }
 }

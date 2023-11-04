@@ -13,51 +13,61 @@ namespace TCT.Pages.EquipTypes
     public class DeleteModel : PageModel
     {
         private readonly TCT.Data.TCTContext _context;
+        private readonly ILogger<DeleteModel> _logger;
 
-        public DeleteModel(TCT.Data.TCTContext context)
+        public DeleteModel(TCT.Data.TCTContext context, ILogger<DeleteModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [BindProperty]
-      public EquipType EquipType { get; set; }
+        public EquipType EquipType { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
         {
-            if (id == null || _context.EquipTypes == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var equiptype = await _context.EquipTypes.FirstOrDefaultAsync(m => m.Id == id);
+            var equiptype = await _context.EquipTypes
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             if (equiptype == null)
             {
                 return NotFound();
             }
-            else 
+
+            if (saveChangesError.GetValueOrDefault())
             {
-                EquipType = equiptype;
+                ErrorMessage = String.Format("Delete {{ID}} failed. Try again", id);
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.EquipTypes == null)
+            if (id == null)
             {
                 return NotFound();
             }
             var equiptype = await _context.EquipTypes.FindAsync(id);
 
-            if (equiptype != null)
+            try
             {
-                EquipType = equiptype;
-                _context.EquipTypes.Remove(EquipType);
+                _context.EquipTypes.Remove(equiptype);
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, ErrorMessage);
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToAction("./Delete", new { id, saveChangesError = true });
         }
     }
 }
