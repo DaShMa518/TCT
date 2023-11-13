@@ -78,18 +78,21 @@
             @Html.DisplayFor(model => model.Terminal.DimRear)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Terminal.TermToolXrefs)
+            @Html.DisplayNameFor(model => model.Terminal.Crimps)
         </dt>
         <dd class="col-sm-10">
             <table class="table">
                 <tr>
                     <th>Tool Id</th>
                 </tr>
-                @foreach (var item in Model.Terminal.TermToolXrefs)
+                @foreach (var item in Model.Terminal.Crimps)
                 {
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.Tool.InternalId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.WireAWG)
                         </td>
                     </tr>
                 }

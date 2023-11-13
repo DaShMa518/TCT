@@ -20,7 +20,7 @@ namespace TCT.Models
         public int CrimpId { get; set; }
 
 
-        public ICollection<TermToolXref> TermToolXrefs { get; set; }
+        //public ICollection<TermToolXref> TermToolXrefs { get; set; }
         public Manufacturer Manufacturer { get; set; }
         public TermClass TermClass { get; set; }
         public ICollection<Crimp> Crimps { get; set; }

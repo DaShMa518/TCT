@@ -9,5 +9,7 @@
         public Terminal Terminal { get; set; }
         public Tool Tool { get; set; }
 
+        public ICollection<Crimp> Crimps { get; set; }
+
     }
 }

@@ -11,7 +11,7 @@
         public int CrimpId { get; set; }
 
 
-        public ICollection<TermToolXref> TermToolXrefs { get; set; }
+        //public ICollection<TermToolXref> TermToolXrefs { get; set; }
         public Manufacturer Manufacturer { get; set; }
         public EquipType EquipType { get; set; }
         public ICollection<Crimp> Crimps { get; set; }

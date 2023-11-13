@@ -31,7 +31,7 @@ namespace TCT.Pages.Tools
             Tool = await _context.Tools
                 .Include(c => c.Manufacturer)
                 .Include(c => c.EquipType)
-                .Include(s => s.TermToolXrefs)
+                .Include(s => s.Crimps)
                     .ThenInclude(e => e.Terminal)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id == id);

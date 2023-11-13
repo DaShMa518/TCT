@@ -70,26 +70,26 @@ namespace TCT.Data
             context.Tools.AddRange(tools);
             context.SaveChanges();
 
-            var termToolXrefs = new TermToolXref[]
-            {
-                //new TermToolXref { TerminalId = 1, ToolId = 1 }, // will add this record manually for testing
-                new TermToolXref { TerminalId = 1, ToolId = 2 },
-                new TermToolXref { TerminalId = 1, ToolId = 3 },
-                new TermToolXref { TerminalId = 2, ToolId = 1 },
-                new TermToolXref { TerminalId = 2, ToolId = 2 },
-                new TermToolXref { TerminalId = 2, ToolId = 3 },
-                new TermToolXref { TerminalId = 3, ToolId = 4 },
-                new TermToolXref { TerminalId = 3, ToolId = 5 },
-                new TermToolXref { TerminalId = 3, ToolId = 6 },
-                new TermToolXref { TerminalId = 3, ToolId = 7 },
-                new TermToolXref { TerminalId = 4, ToolId = 4 },
-                new TermToolXref { TerminalId = 4, ToolId = 5 },
-                new TermToolXref { TerminalId = 4, ToolId = 6 },
-                new TermToolXref { TerminalId = 4, ToolId = 7 }
-            };
+            //var termToolXrefs = new TermToolXref[]
+            //{
+            //    //new TermToolXref { TerminalId = 1, ToolId = 1 }, // will add this record manually for testing
+            //    new TermToolXref { TerminalId = 1, ToolId = 2 },
+            //    new TermToolXref { TerminalId = 1, ToolId = 3 },
+            //    new TermToolXref { TerminalId = 2, ToolId = 1 },
+            //    new TermToolXref { TerminalId = 2, ToolId = 2 },
+            //    new TermToolXref { TerminalId = 2, ToolId = 3 },
+            //    new TermToolXref { TerminalId = 3, ToolId = 4 },
+            //    new TermToolXref { TerminalId = 3, ToolId = 5 },
+            //    new TermToolXref { TerminalId = 3, ToolId = 6 },
+            //    new TermToolXref { TerminalId = 3, ToolId = 7 },
+            //    new TermToolXref { TerminalId = 4, ToolId = 4 },
+            //    new TermToolXref { TerminalId = 4, ToolId = 5 },
+            //    new TermToolXref { TerminalId = 4, ToolId = 6 },
+            //    new TermToolXref { TerminalId = 4, ToolId = 7 }
+            //};
 
-            context.TermToolXrefs.AddRange(termToolXrefs);
-            context.SaveChanges();
+            //context.TermToolXrefs.AddRange(termToolXrefs);
+            //context.SaveChanges();
 
             var crimp = new Crimp[]
             {
@@ -97,6 +97,14 @@ namespace TCT.Data
                 new Crimp { TerminalId = 2, ToolId = 2, WireAWG = 18, CrimpHeight = .085f, PullForce = 30 },
                 new Crimp { TerminalId = 3, ToolId = 4, WireAWG = 18, PullForce = 35 },
                 new Crimp { TerminalId = 4, ToolId = 5, WireAWG = 18, PullForce = 35 },
+                new Crimp { TerminalId = 2, ToolId = 1 },
+                new Crimp { TerminalId = 2, ToolId = 3 },
+                new Crimp { TerminalId = 3, ToolId = 5 },
+                new Crimp { TerminalId = 3, ToolId = 6 },
+                new Crimp { TerminalId = 3, ToolId = 7 },
+                new Crimp { TerminalId = 4, ToolId = 4, WireAWG = 16, PullForce = 47  },
+                new Crimp { TerminalId = 4, ToolId = 6 },
+                new Crimp { TerminalId = 4, ToolId = 7 }
             };
             context.Crimps.AddRange(crimp);
             context.SaveChanges();

@@ -19,10 +19,35 @@ namespace TCT.Pages.Terminals
             _context = context;
         }
 
-        public Terminal Terminal { get; set; } = default!; 
+        public Terminal Terminal { get; set; }
+
+        //public TermToolCrimpVM TermToolCrimp { get; set; }
+        //public int TerminalID { get; set; }
+        //public int ToolID { get; set; }
+
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            //TermToolCrimp = new TermToolCrimpVM();
+            //TermToolCrimp.Terminals = await _context.Terminals
+            //    .Include(i => i.Manufacturer)
+            //    .Include(i => i.TermClass)
+            //    .Include(i => i.TermToolXrefs)
+            //        .ThenInclude(j => j.Tool)
+            //    .ToListAsync();
+
+            //if(id != null)
+            //{
+            //    TerminalID = id.Value;
+            //    Terminal terminal = TermToolCrimp.Terminals
+            //        .Where(i => i.Id == TerminalID).Single();
+            //    //TermToolCrimp.Crimps = terminal.Crimps;
+
+            //}
+
+
+
+
             if (id == null)
             {
                 return NotFound();
@@ -31,8 +56,9 @@ namespace TCT.Pages.Terminals
             Terminal = await _context.Terminals
                 .Include(c => c.Manufacturer)
                 .Include(c => c.TermClass)
-                .Include(s => s.TermToolXrefs)
+                .Include(c => c.Crimps)
                     .ThenInclude(e => e.Tool)
+                //.ThenInclude(x => x.EquipType)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id == id);
 

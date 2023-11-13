@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\TermToolXrefs\**" />
+    <Content Remove="Pages\TermToolXrefs\**" />
+    <EmbeddedResource Remove="Pages\TermToolXrefs\**" />
+    <None Remove="Pages\TermToolXrefs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\TermToolXref.cs" />
     <Compile Remove="Pages\Terminals\TerminalSelectPageModel.cs" />
   </ItemGroup>
 

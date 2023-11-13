@@ -18,7 +18,7 @@ namespace TCT.Data
 
         public DbSet<Terminal> Terminals { get; set; }
         public DbSet<Tool> Tools { get; set; }
-        public DbSet<TermToolXref> TermToolXrefs { get; set; }
+        //public DbSet<TermToolXref> TermToolXrefs { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
         public DbSet<EquipType> EquipTypes { get; set; }
         public DbSet<TermClass> TermClasses { get; set; }
