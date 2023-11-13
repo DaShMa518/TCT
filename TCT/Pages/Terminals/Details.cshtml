@@ -1,9 +1,24 @@
-﻿@page
+﻿@page "{id:int?}"
 @model TCT.Pages.Terminals.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
 }
+
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+            vertical-align: top;
+        }
+    </style>
+</head>
 
 <h1>Details</h1>
 
@@ -77,7 +92,7 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Terminal.DimRear)
         </dd>
-        <dt class="col-sm-2">
+@*         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Terminal.Crimps)
         </dt>
         <dd class="col-sm-10">
@@ -91,15 +106,66 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Tool.InternalId)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.WireAWG)
-                        </td>
                     </tr>
                 }
             </table>
-        </dd>
+        </dd> *@
     </dl>
 </div>
+    <body>
+        @* <h1>@Model.Terminal.PartNo</h1> *@
+        <h1>Tool Selection</h1>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Internal ID</th>
+                    <th>Manufacturer</th>
+                    <th>Tool Type</th>
+                    <th>Wire AWG</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var toolGroup in Model.Terminal.Crimps.GroupBy(c => c.ToolId))
+                {
+                    var tool = toolGroup.First().Tool;
+                    <tr>
+                        @* <td>@crimp.Tool.InternalId</td> *@
+                        <td rowspan="@toolGroup.Count()">@tool.InternalId</td>
+                        <td rowspan="@toolGroup.Count()">@tool.Manufacturer.Name</td>
+                        <td rowspan="@toolGroup.Count()">@tool.EquipType.Name</td>
+                        <td style="vertical-align: top;">@toolGroup.First().WireAWG</td>
+                        
+
+                            @* <table border="1">
+                                <thead>
+                                    <tr>
+                                        <th>Crimp Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @* //@foreach (var crimp in tool.Crimps) *@
+                                    @* {  *@
+                                       @*  <tr>
+                                            <td>@crimp.WireAWG</td>
+                                        </tr> *@ 
+                                    @* } *@
+                                @* </tbody>
+                            </table>
+                        </td> *@
+                    </tr>
+                    @foreach (var crimp in toolGroup.Skip(1))
+                    {
+                        <tr>
+                            @* <td></td> *@
+                            <td>@crimp.WireAWG</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </body>
+
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Terminal?.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>

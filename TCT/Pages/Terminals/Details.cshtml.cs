@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TCT.Data;
 using TCT.Models;
+using TCT.Models.TCTViewModels; // Add VM
 
 namespace TCT.Pages.Terminals
 {
@@ -28,39 +29,30 @@ namespace TCT.Pages.Terminals
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            //TermToolCrimp = new TermToolCrimpVM();
-            //TermToolCrimp.Terminals = await _context.Terminals
-            //    .Include(i => i.Manufacturer)
-            //    .Include(i => i.TermClass)
-            //    .Include(i => i.TermToolXrefs)
-            //        .ThenInclude(j => j.Tool)
-            //    .ToListAsync();
-
-            //if(id != null)
-            //{
-            //    TerminalID = id.Value;
-            //    Terminal terminal = TermToolCrimp.Terminals
-            //        .Where(i => i.Id == TerminalID).Single();
-            //    //TermToolCrimp.Crimps = terminal.Crimps;
-
-            //}
-
-
-
-
             if (id == null)
             {
                 return NotFound();
             }
 
-            Terminal = await _context.Terminals
-                .Include(c => c.Manufacturer)
-                .Include(c => c.TermClass)
-                .Include(c => c.Crimps)
-                    .ThenInclude(e => e.Tool)
-                //.ThenInclude(x => x.EquipType)
+            //Terminal = await _context.Terminals
+            //    .Include(c => c.Manufacturer)
+            //    .Include(c => c.TermClass)
+            //    .Include(c => c.Crimps)
+            //        .ThenInclude(e => e.Tool)
+            //    //.ThenInclude(x => x.EquipType)
+            //    .Distinct()
+            //    .AsNoTracking()
+            //    .FirstOrDefaultAsync(m => m.Id == id);
+
+            Terminal = _context.Terminals
+                .Include(t => t.Crimps)
+                    .ThenInclude(c => c.Tool)
+                        .ThenInclude(tool => tool.EquipType)
+                .Include(t => t.Crimps)
+                    .ThenInclude(c => c.Tool)
+                        .ThenInclude(tool => tool.Manufacturer)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefault(t => t.Id == id);
 
             if (Terminal == null)
             {

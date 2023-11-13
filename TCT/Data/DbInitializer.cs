@@ -91,11 +91,14 @@ namespace TCT.Data
             //context.TermToolXrefs.AddRange(termToolXrefs);
             //context.SaveChanges();
 
+
+
             var crimp = new Crimp[]
             {
                 new Crimp { TerminalId = 1, ToolId = 1, WireAWG = 18, CrimpHeight = .085f, PullForce = 30 },
                 new Crimp { TerminalId = 2, ToolId = 2, WireAWG = 18, CrimpHeight = .085f, PullForce = 30 },
                 new Crimp { TerminalId = 3, ToolId = 4, WireAWG = 18, PullForce = 35 },
+                new Crimp { TerminalId = 3, ToolId = 4, WireAWG = 16, PullForce = 47 },
                 new Crimp { TerminalId = 4, ToolId = 5, WireAWG = 18, PullForce = 35 },
                 new Crimp { TerminalId = 2, ToolId = 1 },
                 new Crimp { TerminalId = 2, ToolId = 3 },

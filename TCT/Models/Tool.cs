@@ -15,6 +15,7 @@
         public Manufacturer Manufacturer { get; set; }
         public EquipType EquipType { get; set; }
         public ICollection<Crimp> Crimps { get; set; }
+        //public ICollection<Terminal> Terminals { get; set; }
 
 
 

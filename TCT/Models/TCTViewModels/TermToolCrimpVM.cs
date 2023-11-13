@@ -1,4 +1,4 @@
-﻿namespace TCT.Models
+﻿namespace TCT.Models.TCTViewModels
 {
     public class TermToolCrimpVM
     {

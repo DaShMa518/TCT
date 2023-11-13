@@ -24,6 +24,7 @@ namespace TCT.Models
         public Manufacturer Manufacturer { get; set; }
         public TermClass TermClass { get; set; }
         public ICollection<Crimp> Crimps { get; set; }
+        //public ICollection<Tool> Tools { get; set; }
 
 
     }
