@@ -45,6 +45,8 @@ namespace TCT.Pages.Terminals
             //    .FirstOrDefaultAsync(m => m.Id == id);
 
             Terminal = _context.Terminals
+                .Include(t => t.Manufacturer)
+                .Include(t => t.TermClass)
                 .Include(t => t.Crimps)
                     .ThenInclude(c => c.Tool)
                         .ThenInclude(tool => tool.EquipType)

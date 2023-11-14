@@ -9,10 +9,11 @@ namespace TCT.Models
         public int? ManufacturerId { get; set; }
         public int? TermClassId { get; set; }
 
-        public float? MaxAWG { get; set; }
-        public float? MidMaxAWG { get; set; }
-        public float? MidMinAWG { get; set; }
-        public float? MinAWG { get; set;}
+        public float? MinWireAWG { get; set; }
+        //public float? MidMaxAWG { get; set; }
+        //public float? MidMinAWG { get; set; }
+        public float? MaxWireAWG { get; set;}
+        public float? MinInsulDiam { get; set; }
         public float? MaxInsulDiam { get; set; }
         public float? StripLength { get; set; }
         public float? DimFront { get; set; }
