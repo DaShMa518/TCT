@@ -42,14 +42,14 @@
             @Html.DisplayFor(model => model.Tool.EquipType.Name)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Tool.TermToolXrefs)
+            @Html.DisplayNameFor(model => model.Tool.Crimps)
         </dt>
         <dd class="col-sm-10">
             <table class="table">
                 <tr>
                     <th>Terminal Id</th>
                 </tr>
-                @foreach (var item in Model.Tool.TermToolXrefs)
+                @foreach (var item in Model.Tool.Crimps)
                 {
                     <tr>
                         <td>

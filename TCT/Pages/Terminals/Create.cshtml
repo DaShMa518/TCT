@@ -40,11 +40,11 @@
                 <span asp-validation-for="Terminal.TermClassId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Terminal.MaxAWG" class="control-label"></label>
-                <input asp-for="Terminal.MaxAWG" class="form-control" />
-                <span asp-validation-for="Terminal.MaxAWG" class="text-danger"></span>
+                <label asp-for="Terminal.MinWireAWG" class="control-label"></label>
+                <input asp-for="Terminal.MinWireAWG" class="form-control" />
+                <span asp-validation-for="Terminal.MinWireAWG" class="text-danger"></span>
             </div>
-            <div class="form-group">
+@*             <div class="form-group">
                 <label asp-for="Terminal.MidMaxAWG" class="control-label"></label>
                 <input asp-for="Terminal.MidMaxAWG" class="form-control" />
                 <span asp-validation-for="Terminal.MidMaxAWG" class="text-danger"></span>
@@ -53,11 +53,16 @@
                 <label asp-for="Terminal.MidMinAWG" class="control-label"></label>
                 <input asp-for="Terminal.MidMinAWG" class="form-control" />
                 <span asp-validation-for="Terminal.MidMinAWG" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="Terminal.MaxWireAWG" class="control-label"></label>
+                <input asp-for="Terminal.MaxWireAWG" class="form-control" />
+                <span asp-validation-for="Terminal.MaxWireAWG" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Terminal.MinAWG" class="control-label"></label>
-                <input asp-for="Terminal.MinAWG" class="form-control" />
-                <span asp-validation-for="Terminal.MinAWG" class="text-danger"></span>
+                <label asp-for="Terminal.MinInsulDiam" class="control-label"></label>
+                <input asp-for="Terminal.MinInsulDiam" class="form-control" />
+                <span asp-validation-for="Terminal.MinInsulDiam" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Terminal.MaxInsulDiam" class="control-label"></label>
