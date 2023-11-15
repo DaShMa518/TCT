@@ -19,13 +19,13 @@ namespace TCT.Pages.Manufacturers
             _context = context;
         }
 
-        public IList<Manufacturer> Manufacturer { get;set; } = default!;
+        public IList<Manufacturer> Manufacturers { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
             if (_context.Manufacturers != null)
             {
-                Manufacturer = await _context.Manufacturers.ToListAsync();
+                Manufacturers = await _context.Manufacturers.ToListAsync();
             }
         }
     }

@@ -5,9 +5,99 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-<div>
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            vertical-align: top;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<h2>@Model.Tool.InternalId</h2>
+<p>
+    <a asp-page="./Edit" asp-route-id="@Model.Tool?.Id">Edit</a> |
+    <a asp-page="./Delete" asp-route-id="@Model.Tool?.Id">Delete</a>
+</p>
+<h3>Details</h3>
+
+<table id="Tooltable" class="table">
+    <thead class="table-primary">
+        <tr>
+            <th width="100">Internal ID</th>
+            <th width="100">Model Number</th>
+            <th width="100">Serial Number</th>
+            <th width="150">Manufacturer</th>
+            <th width="100">Tool Type</th>
+        </tr>
+    </thead>
+    <tbody id="TableBody">
+        <tr>
+            <td>@Html.DisplayFor(model => model.Tool.InternalId)</td>
+            <td>@Html.DisplayFor(model => model.Tool.ModelNo)</td>
+            <td>@Html.DisplayFor(model => model.Tool.SerialNo)</td>
+            <td>@Html.DisplayFor(model => model.Tool.Manufacturer.Name)</td>
+            <td>@Html.DisplayFor(model => model.Tool.EquipType.Name)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Terminal Selection</h3>
+
+<table id="TermTable" class="table table-hover">
+    <thead class="table-success">
+        <tr>
+            <th width="100">Part Number</th>
+            <th width="150">Manufacturer</th>
+            <th width="100">Class ID</th>
+            <th class="center" width="80">
+                <div>Wire AWG</div>
+            </th>
+            <th class="center" width="80">
+                <div>Crimp Height</div>
+            </th>
+            <th class="center" width="80">
+                <div>Pull Force</div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var termGroup in Model.Tool.Crimps.GroupBy(c => c.TerminalId))
+        {
+            var term = termGroup.First().Terminal;
+            <tr>
+                <td rowspan="@termGroup.Count()">@term.PartNo</td>
+                <td rowspan="@termGroup.Count()">@term.Manufacturer.Name</td>
+                <td rowspan="@termGroup.Count()">@term.TermClass.Name</td>
+                <td align="center" style="vertical-align: top;">@termGroup.First().WireAWG</td>
+                <td align="center" style="vertical-align: top;">@termGroup.First().CrimpHeight</td>
+                <td align="center" style="vertical-align: top;">@termGroup.First().PullForce</td>
+            </tr>
+            @foreach (var crimp in termGroup.Skip(1))
+            {
+                <tr>
+                    <td align="center">@crimp.WireAWG</td>
+                    <td align="center">@crimp.CrimpHeight</td>
+                    <td align="center">@crimp.PullForce</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+@* <div>
     <h4>Tool</h4>
     <hr />
     <dl class="row">
@@ -60,8 +150,8 @@
             </table>
         </dd>
     </dl>
-</div>
+</div> *@
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Tool?.Id">Edit</a> |
+    @* <a asp-page="./Edit" asp-route-id="@Model.Tool?.Id">Edit</a> | *@
     <a asp-page="./Index">Back to List</a>
 </div>

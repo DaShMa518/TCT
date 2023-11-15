@@ -32,11 +32,12 @@ namespace TCT.Pages.EquipTypes
                 return NotFound();
             }
 
-            var equiptype = await _context.EquipTypes
+            EquipType = await _context.EquipTypes
                 .AsNoTracking()
+                //.ToListAsync();
                 .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (equiptype == null)
+            if (EquipType == null)
             {
                 return NotFound();
             }

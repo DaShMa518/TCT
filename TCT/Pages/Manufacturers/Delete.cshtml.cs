@@ -32,11 +32,11 @@ namespace TCT.Pages.Manufacturers
                 return NotFound();
             }
 
-            var manufacturer = await _context.Manufacturers
+            Manufacturer = await _context.Manufacturers
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (manufacturer == null)
+            if (Manufacturer == null)
             {
                 return NotFound();
             }
