@@ -6,6 +6,5 @@
         public string Name { get; set; }
         
         public ICollection<Tool> Tools { get; set; }
-
     }
 }

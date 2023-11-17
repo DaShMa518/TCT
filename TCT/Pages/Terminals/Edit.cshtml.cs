@@ -69,8 +69,6 @@ namespace TCT.Pages.Terminals
                 s => s.ManufacturerId,
                 s => s.TermClassId,
                 s => s.MinWireAWG,
-                //s => s.MidMaxAWG,
-                //s => s.MidMinAWG,
                 s => s.MaxWireAWG,
                 s => s.MinInsulDiam,
                 s => s.MaxInsulDiam,

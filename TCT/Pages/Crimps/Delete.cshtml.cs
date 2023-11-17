@@ -33,6 +33,8 @@ namespace TCT.Pages.Crimps
             }
 
             Crimp = await _context.Crimps
+            .Include(c => c.Terminal)
+            .Include(c => c.Tool)
             .AsNoTracking()
             .FirstOrDefaultAsync(m => m.Id == id);
 

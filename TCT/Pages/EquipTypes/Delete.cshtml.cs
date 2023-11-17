@@ -34,7 +34,6 @@ namespace TCT.Pages.EquipTypes
 
             EquipType = await _context.EquipTypes
                 .AsNoTracking()
-                //.ToListAsync();
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (EquipType == null)

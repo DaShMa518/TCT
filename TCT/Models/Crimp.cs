@@ -11,8 +11,5 @@
 
         public Terminal Terminal { get; set; }
         public Tool Tool { get; set; }
-
-        //public TermToolXref TermToolXref { get; set; }
-
     }
 }
