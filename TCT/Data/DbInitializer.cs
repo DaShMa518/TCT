@@ -69,29 +69,6 @@ namespace TCT.Data
             context.Tools.AddRange(tools);
             context.SaveChanges();
 
-            //var termToolXrefs = new TermToolXref[]
-            //{
-            //    //new TermToolXref { TerminalId = 1, ToolId = 1 }, // will add this record manually for testing
-            //    new TermToolXref { TerminalId = 1, ToolId = 2 },
-            //    new TermToolXref { TerminalId = 1, ToolId = 3 },
-            //    new TermToolXref { TerminalId = 2, ToolId = 1 },
-            //    new TermToolXref { TerminalId = 2, ToolId = 2 },
-            //    new TermToolXref { TerminalId = 2, ToolId = 3 },
-            //    new TermToolXref { TerminalId = 3, ToolId = 4 },
-            //    new TermToolXref { TerminalId = 3, ToolId = 5 },
-            //    new TermToolXref { TerminalId = 3, ToolId = 6 },
-            //    new TermToolXref { TerminalId = 3, ToolId = 7 },
-            //    new TermToolXref { TerminalId = 4, ToolId = 4 },
-            //    new TermToolXref { TerminalId = 4, ToolId = 5 },
-            //    new TermToolXref { TerminalId = 4, ToolId = 6 },
-            //    new TermToolXref { TerminalId = 4, ToolId = 7 }
-            //};
-
-            //context.TermToolXrefs.AddRange(termToolXrefs);
-            //context.SaveChanges();
-
-
-
             var crimp = new Crimp[]
             {
                 new Crimp { TerminalId = 1, ToolId = 1, WireAWG = 20, PullForce = 22 },

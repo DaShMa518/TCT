@@ -32,11 +32,11 @@ namespace TCT.Pages.TermClasses
                 return NotFound();
             }
 
-            var termclass = await _context.TermClasses
+            TermClass = await _context.TermClasses
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (termclass == null)
+            if (TermClass == null)
             {
                 return NotFound();
             }

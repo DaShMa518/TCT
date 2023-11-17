@@ -24,7 +24,7 @@ namespace TCT.Pages.Tools
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
 
-        public IList<Tool> Tools { get;set; } = default!;
+        public IList<Tool> Tools { get;set; }
 
         public async Task OnGetAsync(string sortOrder, string searchString)
         {

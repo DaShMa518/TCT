@@ -22,101 +22,29 @@
     </div>
 </form>
 
-<table class="table">
-    <thead>
+<table id="TermTable" class="table table-striped">
+    <thead class="table-primary">
         <tr>
-            <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.PartNoSort">
-                    @* @Html.DisplayNameFor(model => model.Terminals[0].PartNo) *@
-                    Part Number
-                </a>
-            </th>
-            <th>
-                @* @Html.DisplayNameFor(model => model.Terminals[0].ManufacturerId) *@
-                Manufacturer
-            </th>
-            <th>
-                @* @Html.DisplayNameFor(model => model.Terminals[0].TermClassId) *@
-                Class ID
-            </th>
-@*             <th>
-                @Html.DisplayNameFor(model => model.Terminals[0].MinWireAWG)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Terminals[0].MidMaxAWG)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Terminals[0].MidMinAWG)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Terminals[0].MaxWireAWG)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Terminals[0].MinInsulDiam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Terminals[0].MaxInsulDiam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Terminals[0].StripLength)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Terminals[0].DimFront)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Terminals[0].DimRear)
-            </th>
-            <th></th> *@
+            <th><a asp-page="./Index" asp-route-sortOrder="@Model.PartNoSort">Part Number</a></th>
+            <th>Manufacturer</th>
+            <th>Class ID</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Terminals) {
-        <tr>
-            <td>
-                <a asp-page="./Details" asp-route-id="@item.Id">@item.PartNo</a>
-            </td>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.PartNo)
-            </td> *@
-            <td>
-                @Html.DisplayFor(modelItem => item.Manufacturer.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TermClass.Name)
-            </td>
-@*             <td>
-                @Html.DisplayFor(modelItem => item.MinWireAWG)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MidMaxAWG)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MidMinAWG)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaxWireAWG)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MinInsulDiam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaxInsulDiam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StripLength)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DimFront)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DimRear)
-            </td> *@
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                @* <a asp-page="./Details" asp-route-id="@item.Id">Details</a> | *@
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Terminals) {
+            <tr>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.Id">@item.PartNo</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TermClass.Name)
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+

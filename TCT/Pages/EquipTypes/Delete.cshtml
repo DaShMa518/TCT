@@ -8,18 +8,24 @@
 <h1>Delete</h1>
 
 <h3>Are you sure you want to delete this?</h3>
+
+<hr />
+<hr />
+<table id="TypeTable" class="table">
+    <thead class="table-danger">
+        <tr>
+            <th>Tool Type</th>
+        </tr>
+    </thead>
+    <tbody id="TableBody">
+        <tr>
+            <td>@Html.DisplayFor(model => model.EquipType.Name)</td>
+        </tr>
+    </tbody>
+</table>
+<hr />
+
 <div>
-    <h4>EquipType</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EquipType.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EquipType.Name)
-        </dd>
-    </dl>
-    
     <form method="post">
         <input type="hidden" asp-for="EquipType.Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |

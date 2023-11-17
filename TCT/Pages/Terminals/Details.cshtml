@@ -22,11 +22,15 @@
     </style>
 </head>
 
-<h3>Details</h3>
 <h2>@Model.Terminal.PartNo</h2>
+<p>
+    <a asp-page="./Edit" asp-route-id="@Model.Terminal?.Id">Edit</a> |
+    <a asp-page="./Delete" asp-route-id="@Model.Terminal?.Id">Delete</a>
+</p>
+<h3>Details</h3>
 
 <table id="TermTable" class="table header-fixed">
-    <thead class="bg-light">
+    <thead class="table-primary">
         <tr>
             <th width="150">Manufacturer</th>
             <th width="100">Class ID</th>
@@ -71,8 +75,8 @@
 
 <h3>Tool Selection</h3>
 
-<table id="ToolTable" class="table">
-    <thead class="bg-light">
+<table id="ToolTable" class="table table-hover">
+    <thead class="table-success">
         <tr>
             <th width="100">Internal ID</th>
             <th width="150">Manufacturer</th>
@@ -114,6 +118,5 @@
 
 
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Terminal?.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>
