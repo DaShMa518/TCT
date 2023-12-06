@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TCT.Pages.Tools
 {
+    [Authorize]
     public class ToolOptionsSelectPageModel : PageModel
     {
         public SelectList ManufacturerSelectionSL { get; set; }

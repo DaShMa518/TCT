@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Razor.Language.Intermediate;
 using Microsoft.Build.Evaluation;
 using Microsoft.EntityFrameworkCore;
@@ -10,13 +11,15 @@ using TCT.Models;
 
 namespace TCT.Data
 {
-    public class TCTContext : DbContext
+    //public class TCTContext : DbContext
+    public class TCTContext : IdentityDbContext<TCTUser>
     {
         public TCTContext (DbContextOptions<TCTContext> options)
             : base(options)
         {
         }
 
+        //public DbSet<TCTUser> TCTUsers {  get; set; }
         public DbSet<Terminal> Terminals { get; set; }
         public DbSet<Tool> Tools { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
@@ -29,6 +32,8 @@ namespace TCT.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Terminal>()
                 .ToTable(nameof(Terminal));
 

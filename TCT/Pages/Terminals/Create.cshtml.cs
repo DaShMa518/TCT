@@ -4,6 +4,7 @@ using System.Composition;
 using System.Linq;
 using System.Runtime.Intrinsics.X86;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,7 +13,7 @@ using TCT.Models;
 
 namespace TCT.Pages.Terminals
 {
-
+    [Authorize]
     public class CreateModel : TermOptionsSelectPageModel
     //public class CreateModel : PageModel
 
