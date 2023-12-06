@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using TCT.Models;
 
 namespace TCT.Pages.Terminals
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly TCT.Data.TCTContext _context;
@@ -26,7 +28,7 @@ namespace TCT.Pages.Terminals
         public IList<Terminal> Terminals { get;set; } = default!;
 
         public async Task OnGetAsync(string sortOrder, string searchString)
-        {
+            {
             PartNoSort = String.IsNullOrEmpty(sortOrder) ? "partNo_desc" : "";
             CurrentFilter = searchString;
 

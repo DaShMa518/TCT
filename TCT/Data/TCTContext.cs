@@ -19,6 +19,7 @@ namespace TCT.Data
         {
         }
 
+        //public DbSet<TCTUser> TCTUsers {  get; set; }
         public DbSet<Terminal> Terminals { get; set; }
         public DbSet<Tool> Tools { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
