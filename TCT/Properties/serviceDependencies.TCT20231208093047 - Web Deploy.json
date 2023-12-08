@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/TCT20231208093047/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsTCTContext_D175D63959",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/tctdbserver/databases/TCTnew_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:TCTContext",
+      "dynamicId": null
+    }
+  }
+}

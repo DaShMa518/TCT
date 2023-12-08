@@ -10,22 +10,26 @@ namespace TCT.Services
     {
         private readonly ILogger _logger;
 
-        public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor,
+        public EmailSender(/*IOptions<AuthMessageSenderOptions> optionsAccessor,*/
                            ILogger<EmailSender> logger)
         {
-            Options = optionsAccessor.Value;
+            //Options = optionsAccessor.Value;
             _logger = logger;
         }
 
-        public AuthMessageSenderOptions Options { get; } //Set with Secret Manager.
+        //public AuthMessageSenderOptions Options { get; } //Set with Secret Manager.
 
         public async Task SendEmailAsync(string toEmail, string subject, string message)
         {
-            if (string.IsNullOrEmpty(Options.SendGridKey))
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+            //if (string.IsNullOrEmpty(Options.SendGridKey))
+            if (string.IsNullOrEmpty(apiKey))
             {
                 throw new Exception("Null SendGridKey");
             }
-            await Execute(Options.SendGridKey, subject, message, toEmail);
+
+            //await Execute(Options.SendGridKey, subject, message, toEmail);
+            await Execute(apiKey, subject, message, toEmail);
         }
 
         public async Task Execute(string apiKey, string subject, string message, string toEmail)
