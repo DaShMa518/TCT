@@ -25,7 +25,6 @@
 <table id="TermTable" class="table table-striped">
     <thead class="table-primary">
         <tr>
-<<<<<<< HEAD
             <th><a asp-page="./Index" asp-route-sortOrder="@Model.PartNoSort">Part Number</a></th>
             <th>Manufacturer</th>
             <th>Class ID</th>
@@ -45,7 +44,6 @@
                 </td>
             </tr>
         }
-=======
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.PartNoSort">
                     @Html.DisplayNameFor(model => model.Terminals[0].PartNo)
@@ -58,16 +56,10 @@
                 @Html.DisplayNameFor(model => model.Terminals[0].TermClassId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Terminals[0].MaxAWG)
+                @Html.DisplayNameFor(model => model.Terminals[0].MaxWireAWG)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Terminals[0].MidMaxAWG)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Terminals[0].MidMinAWG)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Terminals[0].MinAWG)
+                @Html.DisplayNameFor(model => model.Terminals[0].MinWireAWG)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Terminals[0].MaxInsulDiam)
@@ -97,16 +89,10 @@
                 @Html.DisplayFor(modelItem => item.TermClass.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MaxAWG)
+                @Html.DisplayFor(modelItem => item.MaxWireAWG)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MidMaxAWG)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MidMinAWG)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MinAWG)
+                @Html.DisplayFor(modelItem => item.MinWireAWG)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MaxInsulDiam)
@@ -127,7 +113,6 @@
             </td>
         </tr>
 }
->>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
     </tbody>
 </table>
 

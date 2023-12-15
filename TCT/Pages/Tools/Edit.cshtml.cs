@@ -32,12 +32,10 @@ namespace TCT.Pages.Tools
                 return NotFound();
             }
 
-<<<<<<< HEAD
             PopulateManufacturerDropDownList(_context);
             PopulateEquipTypeDropDownList(_context);
 
-=======
->>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
+
             Tool = await _context.Tools
                 .Include(c => c.Manufacturer)
                 .Include(c => c.EquipType)
@@ -80,13 +78,11 @@ namespace TCT.Pages.Tools
                 return RedirectToPage("./Index");
             }
 
-<<<<<<< HEAD
             // Select ManufacturerId if TryUpdateModelAsync fails.
             PopulateManufacturerDropDownList(_context, toolToUpdate.ManufacturerId);
             // Select TermClassId if TryUpdateModelAsync fails.
             PopulateEquipTypeDropDownList(_context, toolToUpdate.EquipTypeId);
-=======
->>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
+
             return Page();
         }
 
