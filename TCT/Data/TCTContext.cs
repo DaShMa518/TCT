@@ -11,15 +11,12 @@ using TCT.Models;
 
 namespace TCT.Data
 {
-    //public class TCTContext : DbContext
     public class TCTContext : IdentityDbContext<TCTUser>
     {
         public TCTContext (DbContextOptions<TCTContext> options)
             : base(options)
         {
         }
-
-        //public DbSet<TCTUser> TCTUsers {  get; set; }
         public DbSet<Terminal> Terminals { get; set; }
         public DbSet<Tool> Tools { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }

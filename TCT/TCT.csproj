@@ -7,50 +7,12 @@
     <UserSecretsId>51afa301-f4f7-4fec-bcc1-471e0788ac7c</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-<!-- <<<<<< HEAD -->
-    <Compile Remove="Pages\TermToolXrefs\**" />
-    <Content Remove="Pages\TermToolXrefs\**" />
-    <EmbeddedResource Remove="Pages\TermToolXrefs\**" />
-    <None Remove="Pages\TermToolXrefs\**" />
-  </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\TermToolXref.cs" />
-    <Compile Remove="Pages\Terminals\TerminalSelectPageModel.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-<!-- ======= -->
-<!-- >>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f -->
-    <None Include="Pages\Crimps\Create.cshtml" />
-    <None Include="Pages\Crimps\Delete.cshtml" />
-    <None Include="Pages\Crimps\Details.cshtml" />
-    <None Include="Pages\Crimps\Edit.cshtml" />
-    <None Include="Pages\Crimps\Index.cshtml" />
-    <None Include="Pages\Terminals\Create.cshtml" />
-    <None Include="Pages\Terminals\Delete.cshtml" />
-    <None Include="Pages\Terminals\Details.cshtml" />
-    <None Include="Pages\Terminals\Edit.cshtml" />
-    <None Include="Pages\Terminals\Index.cshtml" />
-    <None Include="Pages\Tools\Create.cshtml" />
-    <None Include="Pages\Tools\Delete.cshtml" />
-    <None Include="Pages\Tools\Details.cshtml" />
-    <None Include="Pages\Tools\Edit.cshtml" />
-    <None Include="Pages\Tools\Index.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-<!-- <<<<<< HEAD -->
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
-<!-- =======
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.12" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.12" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.12">
- >>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f -->
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

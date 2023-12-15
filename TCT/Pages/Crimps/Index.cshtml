@@ -57,55 +57,5 @@
                 </td>
             </tr>
         }
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Crimp[0].Terminal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Crimp[0].Tool)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Crimp[0].WireAWG)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Crimp[0].CrimpHeight)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Crimp[0].PullForce)
-            </th>
-
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Crimp) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Terminal.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tool.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WireAWG)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CrimpHeight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PullForce)
-            </td>
-
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-
     </tbody>
 </table>
