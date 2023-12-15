@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,7 +12,8 @@ using TCT.Models;
 
 namespace TCT.Pages.Terminals
 {
-    public class EditModel : PageModel
+    [Authorize]
+    public class EditModel : TermOptionsSelectPageModel
     {
         private readonly TCT.Data.TCTContext _context;
 
@@ -30,6 +32,12 @@ namespace TCT.Pages.Terminals
                 return NotFound();
             }
 
+<<<<<<< HEAD
+            PopulateManufacturerDropDownList(_context);
+            PopulateTermClassDropDownList(_context);
+
+=======
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
             Terminal =  await _context.Terminals
                 .Include(c => c.Manufacturer)
                 .Include(c => c.TermClass)
@@ -65,10 +73,16 @@ namespace TCT.Pages.Terminals
                 s => s.PartNo,
                 s => s.ManufacturerId,
                 s => s.TermClassId,
+<<<<<<< HEAD
+                s => s.MinWireAWG,
+                s => s.MaxWireAWG,
+                s => s.MinInsulDiam,
+=======
                 s => s.MaxAWG,
                 s => s.MidMaxAWG,
                 s => s.MidMinAWG,
                 s => s.MinAWG,
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
                 s => s.MaxInsulDiam,
                 s => s.StripLength,
                 s => s.DimFront,
@@ -78,6 +92,13 @@ namespace TCT.Pages.Terminals
                 return RedirectToPage("./Index");
             }
 
+<<<<<<< HEAD
+            // Select ManufacturerId if TryUpdateModelAsync fails.
+            PopulateManufacturerDropDownList(_context, terminalToUpdate.ManufacturerId);
+            // Select TermClassId if TryUpdateModelAsync fails.
+            PopulateTermClassDropDownList(_context, terminalToUpdate.TermClassId);
+=======
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
             return Page();
         }
 

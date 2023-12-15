@@ -1,0 +1,37 @@
+﻿@page
+@model TCT.Pages.TermClasses.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Terminal Classes</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table table-striped">
+    <thead class="table-primary">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.TermClass[0].Name)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var sortedItems = Model.TermClass.OrderBy(c => c.Name).ToList();
+        }
+        @foreach (var item in sortedItems)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

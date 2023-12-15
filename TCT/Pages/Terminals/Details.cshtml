@@ -1,13 +1,125 @@
-﻿@page
+﻿@page "{id:int?}"
 @model TCT.Pages.Terminals.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            vertical-align: top;
+        }
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<h2>@Model.Terminal.PartNo</h2>
+<p>
+    <a asp-page="./Edit" asp-route-id="@Model.Terminal?.Id">Edit</a> |
+    <a asp-page="./Delete" asp-route-id="@Model.Terminal?.Id">Delete</a>
+</p>
+<h3>Details</h3>
+
+<table id="TermTable" class="table header-fixed">
+    <thead class="table-primary">
+        <tr>
+            <th width="150">Manufacturer</th>
+            <th width="100">Class ID</th>
+            <th class="center" width="80">
+                <div>Min AWG</div>
+            </th>
+            <th class="center" width="80">
+                <div>Max AWG</div>
+            </th>
+            <th class="center" width="80">
+                <div>Min OD</div>
+            </th>
+            <th class="center" width="80">
+                <div>Max OD</div>
+            </th>
+            <th class="center" width="80">
+                <div>Strip</div>
+            </th>
+            <th class="center" width="80">
+                <div>Dim. Front</div>
+            </th>
+            <th class="center" width="80">
+                <div>Dim. Rear</div>
+            </th>
+        </tr>
+    </thead>
+    <tbody id="TableBody">
+    <tr>
+        <td align="left">@Html.DisplayFor(model => model.Terminal.Manufacturer.Name)</td>
+        <td align="left">@Html.DisplayFor(model => model.Terminal.TermClass.Name)</td>
+        <td align="center">@Html.DisplayFor(model => model.Terminal.MinWireAWG)</td>
+        <td align="center">@Html.DisplayFor(model => model.Terminal.MaxWireAWG)</td>
+        <td align="center">@Html.DisplayFor(model => model.Terminal.MinInsulDiam)</td>
+        <td align="center">@Html.DisplayFor(model => model.Terminal.MaxInsulDiam)</td>
+        <td align="center">@Html.DisplayFor(model => model.Terminal.StripLength)</td>
+        <td align="center">@Html.DisplayFor(model => model.Terminal.DimFront)</td>
+        <td align="center">@Html.DisplayFor(model => model.Terminal.DimRear)</td>
+    </tr>      
+    </tbody>
+</table>
+
+
+<h3>Tool Selection</h3>
+
+<table id="ToolTable" class="table table-hover">
+    <thead class="table-success">
+        <tr>
+            <th width="100">Internal ID</th>
+            <th width="150">Manufacturer</th>
+            <th width="100">Tool Type</th>
+            <th class="center" width="80">
+                <div>Wire AWG</div>
+            </th>
+            <th class="center" width="80">
+                <div>Crimp Height</div>
+            </th>
+            <th class="center" width="80">
+                <div>Pull Force</div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var toolGroup in Model.Terminal.Crimps.GroupBy(c => c.ToolId))
+        {
+            var tool = toolGroup.First().Tool;
+            <tr>
+                <td rowspan="@toolGroup.Count()">@tool.InternalId</td>
+                <td rowspan="@toolGroup.Count()">@tool.Manufacturer.Name</td>
+                <td rowspan="@toolGroup.Count()">@tool.EquipType.Name</td>
+                <td align="center" style="vertical-align: top;">@toolGroup.First().WireAWG</td>
+                <td align="center" style="vertical-align: top;">@toolGroup.First().CrimpHeight</td>
+                <td align="center" style="vertical-align: top;">@toolGroup.First().PullForce</td>
+            </tr>
+            @foreach (var crimp in toolGroup.Skip(1))
+            {
+                <tr>
+                    <td align="center">@crimp.WireAWG</td>
+                    <td align="center">@crimp.CrimpHeight</td>
+                    <td align="center">@crimp.PullForce</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
 
 <div>
+<<<<<<< HEAD
+=======
     <h4>Terminal</h4>
     <hr />
     <dl class="row">
@@ -99,5 +211,6 @@
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Terminal?.Id">Edit</a> |
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
     <a asp-page="./Index">Back to List</a>
 </div>

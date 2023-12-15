@@ -22,9 +22,30 @@
     </div>
 </form>
 
-<table class="table">
-    <thead>
+<table id="TermTable" class="table table-striped">
+    <thead class="table-primary">
         <tr>
+<<<<<<< HEAD
+            <th><a asp-page="./Index" asp-route-sortOrder="@Model.PartNoSort">Part Number</a></th>
+            <th>Manufacturer</th>
+            <th>Class ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Terminals) {
+            <tr>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.Id">@item.PartNo</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TermClass.Name)
+                </td>
+            </tr>
+        }
+=======
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.PartNoSort">
                     @Html.DisplayNameFor(model => model.Terminals[0].PartNo)
@@ -106,5 +127,8 @@
             </td>
         </tr>
 }
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
     </tbody>
 </table>
+
+

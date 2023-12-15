@@ -5,11 +5,59 @@
     ViewData["Title"] = "Index";
 }
 
+<<<<<<< HEAD
+<h2>Crimp Data</h2>
+=======
 <h1>Index</h1>
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<<<<<<< HEAD
+
+<form asp-page="./Index" method="get">
+    <div class="form-action no-color">
+        <p>
+            Find by Terminal Part No or Tool ID:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" />
+            <a asp-page="./Index">Back to full list</a>
+        </p>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead class="table-primary">
+        <tr>
+            <th><a asp-page="./Index" asp-route-sortOrder="@Model.TerminalSort">Terminal</a></th>
+            <th><a asp-page="./Index" asp-route-sortOrder="@Model.ToolSort">Tool</a></th>
+            <th>Wire AWG</th>
+            <th>Crimp Height</th>
+            <th>Pull Force</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Crimps) {
+            <tr>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.Id">@item.Terminal.PartNo</a>
+                </td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.Id">@item.Tool.InternalId</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WireAWG)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CrimpHeight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PullForce)
+                </td>
+            </tr>
+        }
+=======
 <table class="table">
     <thead>
         <tr>
@@ -58,5 +106,6 @@
             </td>
         </tr>
 }
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
     </tbody>
 </table>

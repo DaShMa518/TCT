@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using TCT.Models;
 
 namespace TCT.Pages.Tools
 {
+    [Authorize]
     public class DeleteModel : PageModel
     {
         private readonly TCT.Data.TCTContext _context;
@@ -33,6 +35,8 @@ namespace TCT.Pages.Tools
             }
 
             Tool = await _context.Tools
+                .Include(c => c.Manufacturer)
+                .Include(c => c.EquipType)
                 .AsNoTracking()
                 //.Include(c => c.Crimps)
                 //.Include(c => c.Manufacturer)

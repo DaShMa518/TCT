@@ -14,7 +14,7 @@
 <form asp-page="./Index" method="get">
     <div class="form-action no-color">
         <p>
-            Find by Part No:
+            Find by ID or Model No:
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
             <input type="submit" value="Search" class="btn btn-primary" />
             <a asp-page="./Index">Back to full list</a>
@@ -22,9 +22,38 @@
     </div>
 </form>
 
-<table class="table">
-    <thead>
+<table class="table table-striped">
+    <thead class="table-primary">
         <tr>
+<<<<<<< HEAD
+            <th><a asp-page="./Index" asp-route-sortOrder="@Model.InternalIdSort">Internal ID</a></th>
+            <th><a asp-page="./Index" asp-route-sortOrder="@Model.ModelNoSort">Model Number</a></th>
+            <th>Serial Number</th>
+            <th>Manufacturer</th>
+            <th>Tool Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Tools) {
+            <tr>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.Id">@item.InternalId</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModelNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SerialNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EquipType.Name)
+                </td>
+            </tr>
+        }
+=======
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.InternalIdSort">
                     @Html.DisplayNameFor(model => model.Tools[0].InternalId)
@@ -72,5 +101,6 @@
             </td>
         </tr>
 }
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
     </tbody>
 </table>

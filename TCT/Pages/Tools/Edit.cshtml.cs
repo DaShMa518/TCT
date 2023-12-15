@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,7 +12,8 @@ using TCT.Models;
 
 namespace TCT.Pages.Tools
 {
-    public class EditModel : PageModel
+    [Authorize]
+    public class EditModel : ToolOptionsSelectPageModel
     {
         private readonly TCT.Data.TCTContext _context;
 
@@ -30,6 +32,12 @@ namespace TCT.Pages.Tools
                 return NotFound();
             }
 
+<<<<<<< HEAD
+            PopulateManufacturerDropDownList(_context);
+            PopulateEquipTypeDropDownList(_context);
+
+=======
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
             Tool = await _context.Tools
                 .Include(c => c.Manufacturer)
                 .Include(c => c.EquipType)
@@ -72,6 +80,13 @@ namespace TCT.Pages.Tools
                 return RedirectToPage("./Index");
             }
 
+<<<<<<< HEAD
+            // Select ManufacturerId if TryUpdateModelAsync fails.
+            PopulateManufacturerDropDownList(_context, toolToUpdate.ManufacturerId);
+            // Select TermClassId if TryUpdateModelAsync fails.
+            PopulateEquipTypeDropDownList(_context, toolToUpdate.EquipTypeId);
+=======
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
             return Page();
         }
 

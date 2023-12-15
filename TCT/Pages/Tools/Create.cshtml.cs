@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,7 +11,9 @@ using TCT.Models;
 
 namespace TCT.Pages.Tools
 {
-    public class CreateModel : PageModel
+    [Authorize]
+    public class CreateModel : ToolOptionsSelectPageModel
+    //public class CreateModel : PageModel
     {
         private readonly TCT.Data.TCTContext _context;
 
@@ -21,6 +24,8 @@ namespace TCT.Pages.Tools
 
         public IActionResult OnGet()
         {
+            PopulateManufacturerDropDownList(_context);
+            PopulateEquipTypeDropDownList(_context);
             Tool = new Tool
             {
                 InternalId = "WP5-075",
@@ -55,6 +60,10 @@ namespace TCT.Pages.Tools
                 return RedirectToPage("./Index");
             }
 
+            // Select ManufacturerId if TryUpdateModelAsync fails.
+            PopulateManufacturerDropDownList(_context, emptyTool.ManufacturerId);
+            // Select TermClassId if TryUpdateModelAsync fails.
+            PopulateEquipTypeDropDownList(_context, emptyTool.EquipTypeId);
             return Page();
         }
     }

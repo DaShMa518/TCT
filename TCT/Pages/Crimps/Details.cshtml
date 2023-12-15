@@ -1,10 +1,61 @@
+<<<<<<< HEAD
+﻿@page "{id:int?}"
+=======
 ﻿@page
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
 @model TCT.Pages.Crimps.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
 }
 
+<<<<<<< HEAD
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            vertical-align: top;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<h2>@Model.Crimp.Terminal.PartNo   |   @Model.Crimp.Tool.InternalId</h2>
+<p>
+    <a asp-page="./Edit" asp-route-id="@Model.Crimp?.Id">Edit</a> |
+    <a asp-page="./Delete" asp-route-id="@Model.Crimp?.Id">Delete</a>
+</p>
+<h3>Details</h3>
+
+<table id="Tooltable" class="table">
+    <thead class="table-primary">
+        <tr>
+            <th>Wire AWG</th>
+            <th>Crimp Height</th>
+            <th>Pull Force</th>
+        </tr>
+    </thead>
+    <tbody id="TableBody">
+        <tr>
+            <td>@Html.DisplayFor(model => model.Crimp.WireAWG)</td>
+            <td>@Html.DisplayFor(model => model.Crimp.CrimpHeight)</td>
+            <td>@Html.DisplayFor(model => model.Crimp.PullForce)</td>
+
+        </tr>
+    </tbody>
+</table>
+<div>
+=======
 <h1>Details</h1>
 
 <div>
@@ -45,5 +96,6 @@
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Crimp?.Id">Edit</a> |
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
     <a asp-page="./Index">Back to List</a>
 </div>

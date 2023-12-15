@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+<<<<<<< HEAD
+using Microsoft.AspNetCore.Authorization;
+=======
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +14,10 @@ using TCT.Models;
 
 namespace TCT.Pages.Crimps
 {
+<<<<<<< HEAD
+    [Authorize]
+=======
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
     public class DetailsModel : PageModel
     {
         private readonly TCT.Data.TCTContext _context;
