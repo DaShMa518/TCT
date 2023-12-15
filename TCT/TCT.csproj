@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
+<!-- <<<<<< HEAD -->
     <Compile Remove="Pages\TermToolXrefs\**" />
     <Content Remove="Pages\TermToolXrefs\**" />
     <EmbeddedResource Remove="Pages\TermToolXrefs\**" />
@@ -21,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-=======
->>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
+<!-- ======= -->
+<!-- >>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f -->
     <None Include="Pages\Crimps\Create.cshtml" />
     <None Include="Pages\Crimps\Delete.cshtml" />
     <None Include="Pages\Crimps\Details.cshtml" />
@@ -41,16 +41,16 @@
   </ItemGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
+<!-- <<<<<< HEAD -->
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
-=======
+<!-- =======
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.12">
->>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
+ >>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f -->
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

@@ -55,7 +55,7 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
 
     var context = services.GetRequiredService<TCTContext>();
-<<<<<<< HEAD
+
     //context.Database.EnsureCreated();
 
     context.Database.Migrate();
@@ -66,9 +66,9 @@ using (var scope = app.Services.CreateScope())
     //var testUserPw = builder.Configuration.GetValue<string>("SeedUserPW");
 
     //await DbInitializer.Initialize(services, testUserPw);
-=======
-    context.Database.EnsureCreated();
->>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
+
+    //context.Database.EnsureCreated();
+
     DbInitializer.Initialize(context);
 }
 

@@ -30,7 +30,6 @@ namespace TCT.Pages.Terminals
                 return NotFound();
             }
 
-<<<<<<< HEAD
             Terminal = _context.Terminals
                 .Include(t => t.Manufacturer)
                 .Include(t => t.TermClass)
@@ -40,13 +39,6 @@ namespace TCT.Pages.Terminals
                 .Include(t => t.Crimps)
                     .ThenInclude(c => c.Tool)
                         .ThenInclude(tool => tool.Manufacturer)
-=======
-            Terminal = await _context.Terminals
-                .Include(c => c.Manufacturer)
-                .Include(c => c.TermClass)
-                .Include(s => s.TermToolXrefs)
-                    .ThenInclude(e => e.Tool)
->>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
                 .AsNoTracking()
                 .FirstOrDefault(t => t.Id == id);
 

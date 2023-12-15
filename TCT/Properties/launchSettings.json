@@ -4,11 +4,11 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-<<<<<<< HEAD
+// <<<<<<< HEAD
         "ASPNETCORE_ENVIRONMENT": "Production"
-=======
-        "ASPNETCORE_ENVIRONMENT": "Development"
->>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
+
+//        "ASPNETCORE_ENVIRONMENT": "Development"
+//>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
       },
       "applicationUrl": "https://localhost:63243;http://localhost:63244"
     }
