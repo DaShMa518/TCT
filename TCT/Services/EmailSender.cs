@@ -18,17 +18,23 @@ namespace TCT.Services
         }
 
         //public AuthMessageSenderOptions Options { get; } //Set with Secret Manager.
+        //public async Task SendEmailAsync(string toEmail, string subject, string message)
+        //{
+        //    if (string.IsNullOrEmpty(Options.SendGridKey))
+        //    {
+        //        throw new Exception("Null SendGridKey");
+        //    }
+        //    await Execute(Options.SendGridKey, subject, message, toEmail);
+        //}
 
         public async Task SendEmailAsync(string toEmail, string subject, string message)
         {
-            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
-            //if (string.IsNullOrEmpty(Options.SendGridKey))
+            var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
             if (string.IsNullOrEmpty(apiKey))
             {
                 throw new Exception("Null SendGridKey");
             }
 
-            //await Execute(Options.SendGridKey, subject, message, toEmail);
             await Execute(apiKey, subject, message, toEmail);
         }
 
