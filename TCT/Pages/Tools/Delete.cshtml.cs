@@ -38,6 +38,9 @@ namespace TCT.Pages.Tools
                 .Include(c => c.Manufacturer)
                 .Include(c => c.EquipType)
                 .AsNoTracking()
+                //.Include(c => c.Crimps)
+                //.Include(c => c.Manufacturer)
+                //.Include(c => c.EquipType)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (Tool == null)

@@ -11,5 +11,10 @@
 
         public Terminal Terminal { get; set; }
         public Tool Tool { get; set; }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
     }
 }

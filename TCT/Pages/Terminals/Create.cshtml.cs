@@ -40,11 +40,18 @@ namespace TCT.Pages.Terminals
                 PartNo = "2-520181-2",
                 ManufacturerId = 1,
                 TermClassId = 1,
+<<<<<<< HEAD
                 MinWireAWG = 18,
                 //MidMaxAWG = 20,
                 //MidMinAWG = 21,
                 MaxWireAWG = 22,
                 MinInsulDiam = null,
+=======
+                MaxAWG = 18,
+                MidMaxAWG = 20,
+                MidMinAWG = 21,
+                MinAWG = 22,
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
                 MaxInsulDiam = .135f,
                 StripLength = .280f,
                 DimFront = .20f,
@@ -68,11 +75,18 @@ namespace TCT.Pages.Terminals
                 s => s.PartNo,
                 s => s.ManufacturerId,
                 s => s.TermClassId,
+<<<<<<< HEAD
                 s => s.MinWireAWG,
                 //s => s.MidMaxAWG,
                 //s => s.MidMinAWG,
                 s => s.MaxWireAWG,
                 s => s.MinInsulDiam,
+=======
+                s => s.MaxAWG,
+                s => s.MidMaxAWG,
+                s => s.MidMinAWG,
+                s => s.MinAWG,
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
                 s => s.MaxInsulDiam,
                 s => s.StripLength,
                 s => s.DimFront,

@@ -9,17 +9,35 @@ namespace TCT.Models
         public int? ManufacturerId { get; set; }
         public int? TermClassId { get; set; }
 
+<<<<<<< HEAD
         public float? MinWireAWG { get; set; }
         public float? MaxWireAWG { get; set;}
         public float? MinInsulDiam { get; set; }
+=======
+        public float? MaxAWG { get; set; }
+        public float? MidMaxAWG { get; set; }
+        public float? MidMinAWG { get; set; }
+        public float? MinAWG { get; set;}
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
         public float? MaxInsulDiam { get; set; }
         public float? StripLength { get; set; }
         public float? DimFront { get; set; }
         public float? DimRear { get; set; }
         public int CrimpId { get; set; }
+<<<<<<< HEAD
 
         public Manufacturer Manufacturer { get; set; }
         public TermClass TermClass { get; set; }
         public ICollection<Crimp> Crimps { get; set; }
+=======
+
+
+        public ICollection<TermToolXref> TermToolXrefs { get; set; }
+        public Manufacturer Manufacturer { get; set; }
+        public TermClass TermClass { get; set; }
+        public ICollection<Crimp> Crimps { get; set; }
+
+
+>>>>>>> 881d7f11e5023fb96b845d9f26e3badbcea7d18f
     }
 }

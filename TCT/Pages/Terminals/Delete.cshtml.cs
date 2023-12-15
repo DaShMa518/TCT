@@ -38,6 +38,7 @@ namespace TCT.Pages.Terminals
                 .Include(c => c.Manufacturer)
                 .Include(c => c.TermClass)
                 .AsNoTracking()
+                //.Include(c => c.Manufacturer)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (Terminal == null)
